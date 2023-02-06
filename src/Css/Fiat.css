@@ -1,0 +1,46 @@
+.container_fiat {
+  background-color: white;
+  min-height: 100vh;
+}
+.container_fiat span {
+  color: var(--yellwo-color);
+}
+.container_fiat h1 {
+  text-align: center;
+  padding: 1rem;
+}
+.container_estimate {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: 1px solid black;
+}
+.container_amount {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+}
+.container_select {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+  justify-content: space-around;
+}
+.container_myasset {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.myasset_details {
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  border: 1px solid black;
+}
+.myasset_detail {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}

@@ -1,0 +1,109 @@
+.menu-trigger {
+  position: relative;
+}
+
+a {
+  list-style: none;
+}
+
+.img_user {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: black;
+  margin-left: 1em;
+  overflow: hidden;
+}
+
+.sub-menu-wrap {
+  position: absolute;
+  top: 100%;
+  width: 300px;
+  right: 5%;
+  box-sizing: border-box;
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height 0.1s linear;
+}
+
+.sub-menu {
+  background-color: whitesmoke;
+  padding: 1.3rem;
+  margin: 10px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-info h5 {
+  font-weight: 500;
+}
+
+.user-info img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: black;
+  margin-right: 15px;
+}
+
+.sub-menu hr {
+  border: 0;
+  height: 2px;
+  width: 100%;
+  margin: 15px 0 10px;
+  color: black;
+}
+
+.sub-menu-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+  margin: 12px 0;
+}
+
+.sub-menu-link:hover {
+  color: black;
+}
+
+.sub-menu-link p {
+  width: 100%;
+  padding-top: 5px;
+}
+
+.sub-menu-link img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  padding: 2px;
+  margin: 5px;
+  background-color: black;
+}
+
+.sub-menu-link hr {
+  width: 100%;
+  height: 10px;
+  background-color: black;
+}
+
+.sub-menu-link:hover p {
+  font-weight: 600;
+}
+
+.sub-menu-wrap.open-menu {
+  max-height: 400px;
+}
+
+
+/* .dropdown-menu-profile li {
+  width: 170px;
+} */
+
+.dropdown-menu-profile {
+  width: 250px;
+}

@@ -1,0 +1,42 @@
+.container_accepttrading {
+  margin-top: 56px;
+  margin-bottom: 2rem;
+  width: 100%;
+  min-height: 100vh;
+  color: white;
+}
+.container_accepttrading span {
+  color: var(--yellwo-color);
+}
+.container_formaccept .container_form .infor_transaction {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 500px;
+  width: 100%;
+  min-height: 100%;
+}
+.container_formaccept .container_form .infor_transaction .name_transaction {
+  display: flex;
+  justify-content: center;
+  column-gap: 2rem;
+}
+.container_formaccept .container_form .infor_transaction .price_transasction {
+  display: flex;
+  justify-content: center;
+  column-gap: 2rem;
+}
+.container_formaccept
+  .container_form
+  .infor_transaction
+  .currency_transasction {
+  display: flex;
+  justify-content: center;
+  column-gap: 2rem;
+}
+.container_formaccept .container_form .infor_transaction .amount_transasction {
+  display: flex;
+  justify-content: center;
+  column-gap: 2rem;
+}

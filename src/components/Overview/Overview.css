@@ -1,0 +1,59 @@
+.container_overview {
+  background-color: white;
+  min-height: 100vh;
+}
+
+.container_overview span {
+  color: var(--yellwo-color);
+}
+
+.container_overview h1 {
+  text-align: center;
+  padding: 1rem;
+}
+
+.overview-table-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+.overview-table-container div {
+  width: 40%;
+  margin: 0 35px;
+  height: 350px;
+  overflow-y: scroll;
+}
+
+.overview-table th,
+td {
+  border-collapse: collapse;
+}
+
+/*  */
+
+.overview-wallet-table-container div {
+  margin: 0 35px;
+  height: 450px;
+  overflow-y: scroll;
+}
+
+.overview-wallet-table th,
+td {
+  border-collapse: collapse;
+  height: 20px;
+}
+
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  padding: 2px 0;
+  background-color: #fff;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+}

@@ -1,0 +1,107 @@
+.container_fiat {
+  background-color: white;
+  min-height: calc(100vh-56px);
+}
+
+.container_fiat span {
+  color: var(--yellwo-color);
+}
+
+.container_fiat h1 {
+  text-align: center;
+  padding: 1rem;
+}
+
+.container_estimate {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* border-bottom: 1px solid black; */
+}
+
+.container_amount {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.container_select {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+  justify-content: space-around;
+}
+
+.container_myasset {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.myasset_title {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 50px
+}
+
+.myasset_details {
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  /* border: 1px solid black; */
+}
+
+.myasset_detail {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+
+
+.withdraw-btn {
+  align-items: center;
+  appearance: none;
+  background-color: var(--yellwo-color);
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #36395A;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono", monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s, transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
+  font-size: 18px;
+}
+
+.withdraw-btn:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.withdraw-btn:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.withdraw-btn:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+}

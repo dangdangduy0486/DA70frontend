@@ -1,0 +1,40 @@
+.page_userinfo {
+  margin-top: 56px;
+  min-height: 100vh;
+  padding: 0;
+  box-sizing: border-box;
+  background: url("../../images/Moon.svg");
+  background-size: cover;
+  width: 100%;
+}
+
+.userinfo_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  position: relative;
+}
+
+.userinfo_container .card {
+  width: 40%;
+}
+
+.userinfo_container .card-header img {
+  height: 4rem;
+  width: 4rem;
+  background-color: white;
+  position: absolute;
+  top: -2rem;
+  border-radius: 50%;
+  left: calc(50% - 2rem);
+}
+
+.userinfo_container .card .card-body h3 {
+  text-align: center;
+}
+
+.QRCode_container div * {
+  margin-left: 20px;
+  height: 350px
+}

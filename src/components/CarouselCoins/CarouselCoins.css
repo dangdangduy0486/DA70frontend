@@ -1,0 +1,42 @@
+.slider {
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  width: auto;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(calc(-200px * 7));
+  }
+}
+
+.slider .slide-track {
+  animation: scroll 40s linear infinite;
+  display: flex;
+  width: calc(200px * 7);
+}
+
+.slider .slide {
+  width: 200px;
+}
+
+.carouselImg {
+  width: 40px;
+  height: 40px;
+}
+@media screen and (max-width: 695px) {
+  .slider {
+    height: 50%;
+  }
+  .carouselImg {
+    width: 20px;
+    height: 20px;
+  }
+}

@@ -1,0 +1,28 @@
+.markets {
+  background: white;
+  font-size: 0.8rem;
+  margin-bottom: 2rem;
+  width: 100%;
+  min-height: 100vh;
+}
+
+#pagination {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 30px;
+}
+
+#pagination * {
+  list-style: none;
+  display: inline-block;
+  justify-items: end;
+  margin: 0 0.1rem;
+  padding-left: 0;
+  border: none;
+}
+
+#pagination button i,
+#pagination li button {
+  width: 40px;
+  height: auto;
+}

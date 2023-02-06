@@ -1,0 +1,30 @@
+.container-error-page {
+    padding-top: 20%;
+}
+
+.error-number,
+.error-not-found {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-number {
+    font-size: 500%;
+}
+
+.error4 {
+    color: yellow
+}
+
+.error0 {
+    color: white
+}
+
+.error-not-found * {
+    font-size: 500%;
+    padding: 50px 10px;
+    color: white;
+    font-weight: bolder;
+}
+

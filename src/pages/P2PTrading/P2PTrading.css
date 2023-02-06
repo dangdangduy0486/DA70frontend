@@ -1,0 +1,140 @@
+.tradingtopeople {
+  margin-top: 56px;
+  margin-bottom: 2rem;
+  /* height: 100%; */
+}
+
+.table-striped-rows tr:nth-child(2n) td {
+  background-color: #fbfbfb;
+}
+
+.table-striped-rows tr {
+  text-align: center;
+}
+
+.table-striped-rows td:nth-last-child(1) {
+  text-align: center;
+}
+
+.table-striped-rows thead {
+  background-color: #f1f1f1;
+}
+
+.table-striped-rows tr:first-child th {
+  text-align: center;
+}
+
+.ant-tabs-nav {
+  background-color: black;
+}
+
+.ant-tabs-tab {
+  color: var(--yellwo-color);
+  letter-spacing: 2px;
+  margin: 0 0.5rem;
+}
+
+.ant-tabs-tab-btn {
+  color: var(--yellwo-color);
+  text-shadow: var(--yellwo-color);
+}
+
+.ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: var(--yellwo-color);
+  text-shadow: 0 0 0.25px var(--yellwo-color);
+}
+
+.ant-tabs .ant-tabs-ink-bar {
+  background-color: var(--yellwo-color);
+}
+
+.form_buy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container_swap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form_buy_swap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.form_buy_text {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding: 1rem;
+  color: black;
+}
+
+.form_buy_text h3 {
+  font-weight: 400;
+}
+
+.ads_title {
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.btn_post {
+  background-color: var(--yellwo-color);
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--yellwo-color);
+}
+
+.btn_post:hover {
+  background-color: white;
+  color: var(--yellwo-color);
+}
+
+.ads_title span {
+  color: var(--yellwo-color);
+}
+
+.input_price {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.P2P-table-container {
+  height: 90vh;
+  overflow-y: scroll;
+}
+
+.P2P-table-container::-webkit-scrollbar-track {
+  /* border: 1px solid #000; */
+  padding: 2px 0;
+  /* background-color: #404040; */
+}
+
+.P2P-table-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.P2P-table-container::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  /* box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+  background-color: #737272;
+  border: 1px solid #000; */
+}
+
+@media screen and (max-width: 480px) {
+  .tradingtopeople * {
+    font-size: 10px;
+  }
+}

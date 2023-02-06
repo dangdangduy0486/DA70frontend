@@ -1,0 +1,62 @@
+.loading {
+    height: 100vh;
+    background-size: cover;
+    background-color: black;
+}
+
+.container_loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    position: relative;
+}
+
+.circle {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    animation: circleanimation 2s linear infinite;
+}
+
+@keyframes circleanimation {
+    0% {
+        transform: rotate(0deg);
+        box-shadow: 2px 2px 2px yellow;
+    }
+
+    50% {
+        transform: rotate(180deg);
+        box-shadow: 2px 2px 2px red;
+    }
+
+    100% {
+        transform: rotate(360deg);
+        box-shadow: 2px 2px 2px green;
+    }
+}
+
+.circle::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    box-shadow: 0 0 5px white;
+}
+
+.container_loading h2 {
+    color: white;
+    text-transform: uppercase;
+    animation: text 3s ease-in-out infinite;
+    font-weight: bold;
+}
+
+@keyframes text {
+    50% {
+        color: black;
+    }
+}

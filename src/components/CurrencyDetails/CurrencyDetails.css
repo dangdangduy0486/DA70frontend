@@ -1,0 +1,59 @@
+#currencyDetails {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0.5rem;
+  background-color: black;
+  color: white;
+  max-width: 100%;
+  margin-top: 5px;
+}
+
+.currency_item {
+  margin-right: 2px;
+  padding: inherit;
+  border-radius: 2px;
+}
+
+.currency_item:hover {
+  background-color: white;
+  color: black;
+}
+
+.dropdown-menu-currencies {
+  width: 600px;
+  height: 400px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.dropdown-menu-category {
+  border-bottom: 1px solid gray;
+
+}
+
+.dropdown-menu-category-title {
+  padding: 5px 50px;
+  font-weight: bold;
+}
+
+#dropdown-currencies {
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+}
+
+.dropdown-currencies-items {
+  display: block;
+  clear: both;
+  font-weight: 400;
+  white-space: nowrap;
+  padding: 0px 20px;
+  cursor: pointer;
+}
+
+.dropdown-currencies-items p:hover {
+  /* text-decoration: underline; */
+  color: #e800f0;
+}

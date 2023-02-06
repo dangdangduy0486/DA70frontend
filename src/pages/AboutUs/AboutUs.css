@@ -1,0 +1,189 @@
+.aboutus {
+  margin-top: 56px;
+  padding: 50px 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: black;
+}
+.aboutus .profile_img {
+  height: auto;
+  width: 30%;
+}
+.aboutus .aboutus_main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.aboutus .about-detail {
+  width: 50%;
+}
+.aboutus_container {
+  margin: 0 auto;
+  width: 95%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 100vh;
+}
+.aboutus .aboutus_container .about-detail h1 {
+  color: white;
+  font-size: 50px;
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+}
+.aboutus .aboutus_container .about-detail h5 {
+  color: white;
+  font-size: 20px;
+  text-transform: capitalize;
+  margin-bottom: 0.8rem;
+  letter-spacing: 2px;
+}
+.aboutus .aboutus_container .about-detail span {
+  color: var(--yellwo-color);
+  font-size: 20px;
+  text-transform: capitalize;
+  margin-bottom: 0.8rem;
+  letter-spacing: 2px;
+}
+.aboutus .aboutus_container .about-detail p {
+  color: rgb(178, 174, 174);
+  letter-spacing: 1px;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+.aboutus .aboutus_container .about-detail a {
+  text-decoration: none;
+  color: white;
+  border: 1px solid transparent;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  font-weight: bold;
+  background-color: var(--yellwo-color);
+  transition: 0.5s;
+}
+.aboutus .aboutus_container .about-detail a:hover {
+  background: transparent;
+  border: 1px solid var(--yellwo-color);
+}
+.aboutus_coin {
+  background-color: #f0f3f5;
+  position: relative;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  padding: 2rem;
+}
+.aboutus_coin .coin_text {
+  width: 50%;
+  position: relative;
+  z-index: 20;
+}
+.aboutus_coin .coin_text h2 {
+  color: black;
+  line-height: 3rem;
+  font-size: 3rem;
+  font-weight: 500;
+}
+.aboutus_coin .coin_text span {
+  color: var(--yellwo-color);
+  line-height: 3rem;
+  font-size: 3rem;
+  font-weight: 800;
+}
+.aboutus_coin .coin_text p {
+  color: black;
+}
+.aboutus_coin .coin_text a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.8rem 1rem;
+  background: var(--yellwo-color);
+  color: white;
+  border-radius: 2rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.aboutus_coin .coin_box1 {
+  width: 30%;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 100;
+}
+.aboutus_coin .coin_box1 img {
+  width: 100%;
+}
+
+.circle_coin {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  clip-path: circle(500px at right 650px);
+}
+@media screen and (max-width: 669px) {
+  .aboutus .aboutus_main {
+    row-gap: 1rem;
+  }
+  .aboutus_container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .aboutus img {
+    width: 50%;
+  }
+  .aboutus .aboutus_container .about-detail h1 {
+    font-size: 20px;
+    margin-top: 1rem;
+  }
+  .aboutus .aboutus_container .about-detail h5 {
+    font-size: 15px;
+  }
+  .aboutus .aboutus_container .about-detail span {
+    font-size: 15px;
+  }
+  .aboutus .aboutus_container .about-detail p {
+    font-size: 12px;
+    margin-bottom: 0.5rem;
+  }
+  .aboutus .aboutus_container .about-detail a {
+    text-decoration: none;
+    color: white;
+    border: 1px solid transparent;
+    padding: 0.1rem;
+    border-radius: 1rem;
+    font-size: 12px;
+  }
+  .aboutus_coin .coin_text {
+    width: 100%;
+  }
+  .aboutus_coin .coin_text h2 {
+    color: black;
+    line-height: 1.5rem;
+    font-size: 20px;
+    font-weight: 500;
+  }
+  .aboutus_coin .coin_text span {
+    line-height: 1rem;
+    font-size: 15px;
+  }
+  .aboutus_coin .coin_text p {
+    font-size: 12px;
+    margin-bottom: 0.5rem;
+  }
+  .aboutus_coin .coin_text a {
+    padding: 0.5rem;
+    border-radius: 1rem;
+    font-size: 12px;
+  }
+  .circle_coin {
+    display: none;
+  }
+  .aboutus_coin .coin_box1 {
+    display: none;
+  }
+}

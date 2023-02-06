@@ -1,0 +1,23 @@
+.container_funding {
+  background-color: white;
+  min-height: 100vh;
+}
+.container_funding span {
+  color: var(--yellwo-color);
+}
+.container_funding h1 {
+  text-align: center;
+  padding: 1rem;
+}
+.container_estimate_fiat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: 1px solid black;
+}
+.container_funding_table {
+  min-height: 100vh;
+}
+.table_funding {
+  padding: 1rem;
+}
