@@ -147,9 +147,7 @@ const SpotRequest = () => {
                 <>
                   <tr>
                     <td>
-                      <CoinSymbols
-                        ids={r.firstUnit}
-                      />
+                      <CoinSymbols ids={r.firstUnit} />
                       {r.firstUnit.charAt(0).toUpperCase() +
                         r.firstUnit.slice(1)}
                     </td>
@@ -167,7 +165,7 @@ const SpotRequest = () => {
                       <span className="text-muted">{`${
                         getCurrencySymbol(r.secondUnit)
                           ? getCurrencySymbol(r.secondUnit)
-                          : "?"
+                          : r.secondUnit
                       } `}</span>
                       <span>
                         {r.total.toLocaleString()

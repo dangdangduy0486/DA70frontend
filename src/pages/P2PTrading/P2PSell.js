@@ -13,12 +13,22 @@ import "./P2PTrading.css";
 
 const P2PSell = () => {
   const [p2pData, setP2PData] = useState([]);
+  const [wantedAmount, setWantedAmount] = useState();
+
   const { email } = useAuth();
 
   const handleClientRequest = async (value) => {
     console.log(value);
     const url = `api/user/request-p2p/create/client-request`;
     const token = localStorage.getItem("token");
+
+    if (wantedAmount > value.amount) {
+      toast.warning(`Your amount must be lower than ${value.amount}!!`);
+      return;
+    } else if (wantedAmount === 0 || !wantedAmount) {
+      toast.warning(`Please enter your desired amount`);
+      return;
+    }
 
     const opts = {
       headers: {
@@ -33,8 +43,8 @@ const P2PSell = () => {
           type: "sell",
           firstUnit: value.firstUnit,
           secondUnit: value.secondUnit,
-          amount: value.amount,
-          total: value.total,
+          amount: wantedAmount,
+          total: (value.total / value.amount) * wantedAmount,
           recieverAddress: value.senderAddress,
           senderAddress: email,
           requestOf: value._id,
@@ -65,6 +75,7 @@ const P2PSell = () => {
               <th scope="col">#</th>
               <th scope="col">Sender</th>
               <th scope="col">Unit</th>
+              <th scope="col">Amount</th>
               <th scope="col">Total</th>
               <th scope="col">Status</th>
               <th scope="col">Date</th>
@@ -85,6 +96,14 @@ const P2PSell = () => {
                       ids={value.firstUnit}
                       amount={value.amount}
                     />
+                  </td>
+                  <td>
+                    <td>
+                      <input
+                        onChange={(e) => setWantedAmount(e.target.value)}
+                        style={{ width: "50px  " }}
+                      />
+                    </td>
                   </td>
                   <td>
                     <span className="text-muted">{`${

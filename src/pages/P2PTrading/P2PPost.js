@@ -46,21 +46,6 @@ const P2PPost = () => {
         console.log(error);
       });
   }, [assetChoose, fiatChoose]);
-  // useEffect(() => {
-  //   axios
-  //     .get("https://api.coingecko.com/api/v3/simple/price", {
-  //       params: {
-  //         ids: assetChoose,
-  //         vs_currencies: fiatChoose,
-  //       },
-  //     })
-  //     .then((response) => {
-  //       setRates(response.data[assetChoose]);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, [assetChoose, fiatChoose]);
 
   const onSubmit = async (values) => {
     const { methodChoose, assetChoose, fiatChoose, yourprice, youramount } =
