@@ -21,7 +21,6 @@ const UserInfor = () => {
 
   return (
     <>
-      <NavBar page="userInfo" />
       <section className="page_userinfo ">
         {role === "admin" ? (
           <>
@@ -36,7 +35,7 @@ const UserInfor = () => {
                 </div>
                 <div className="card-body">
                   <p>
-                    <span className="me-1">You have been a member since</span> 
+                    <span className="me-1">You have been a member since</span>
                     {moment(data.user.createdAt).fromNow()}
                   </p>
                   <form

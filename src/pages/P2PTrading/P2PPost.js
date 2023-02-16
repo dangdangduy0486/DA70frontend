@@ -45,7 +45,7 @@ const P2PPost = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, [assetChoose, fiatChoose]);
+  }, [assetChoose]);
 
   const onSubmit = async (values) => {
     const { methodChoose, assetChoose, fiatChoose, yourprice, youramount } =
