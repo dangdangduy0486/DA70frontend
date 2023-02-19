@@ -1,9 +1,8 @@
 .aboutus {
-  margin-top: 56px;
-  padding: 50px 0;
   width: 100%;
-  min-height: 100vh;
+  min-height: calc(100vh - 56px);
   background-color: black;
+  margin-bottom: 32px;
 }
 .aboutus .profile_img {
   height: auto;

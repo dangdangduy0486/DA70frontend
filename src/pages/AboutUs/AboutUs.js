@@ -1,15 +1,15 @@
 import React from "react";
 import Footer from "../../components/Footer/Footer";
 import NavBar from "../../components/NavBar/NavBar";
+import Loading from "../Loading/Loading";
 import "./AboutUs.css";
 import Duy from "../../images/duy.jpg";
 import Bao from "../../images/bao.jpg";
 import Bitcoin from "../../images/bitcoin.png";
+import { Link } from "react-router-dom";
 
 const Aboutus = () => {
-  // function changeImage() {
-  //   console.log(document.querySelector(".bitcoin1").src);
-  // }
+  if (!Aboutus) return <Loading />;
   return (
     <>
       <NavBar />
@@ -62,12 +62,18 @@ const Aboutus = () => {
                 It's <span>Future</span>
               </h2>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Corrupti natus sint sapiente blanditiis maxime officiis,
-                adipisci libero odio atque qui nemo, fugit quisquam quae sit,
-                laborum nobis error saepe voluptatibus?
+                "As the value goes up, heads start to swivel, and sceptics
+                soften. Starting a new currency is easy. Anyone can do it. The
+                trick is getting people to accept it because it is their use
+                that gives the 'money' value. — Adam B. Levine"
               </p>
-              <a href="#">Let's go</a>
+              <Link
+                // onClick="return false"
+                style={{ textDecoration: "none" }}
+                to="/markets"
+              >
+                Let's go
+              </Link>
             </div>
             <div className="coin_box1">
               <img src={Bitcoin} alt="btc" className="bitcoin1" />

@@ -52,7 +52,7 @@ const Forgot = () => {
   return (
     <>
       <NavBar />
-      <section className="vh-100% gradient-custom">
+      <section className="forgot">
         <div className="container py-5 h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -68,7 +68,7 @@ const Forgot = () => {
                   <h3 className="heading text-center">Forgot password</h3>
                   <p className="infor">Welcome to DBcoin</p>
                   <div className="form-group">
-                    <label htmlFor="email" className="form-lable">
+                    <label htmlFor="email" className="form-lable text-white-50">
                       Your email
                     </label>
                     <input
@@ -81,10 +81,7 @@ const Forgot = () => {
                       onChange={formik.handleChange}
                     ></input>
                   </div>
-                  <button
-                    className="form-submit btn btn-outline-light btn-lg px-5"
-                    type="submit"
-                  >
+                  <button className="btn btn-login" type="submit">
                     Send
                   </button>
                 </form>

@@ -146,7 +146,11 @@ const Mainbonus = () => {
         <div className="letstart">
           <div>
             <h1>Increase your income</h1>
-            <Link className="letstart_button" to="/markets">
+            <Link
+              className="letstart_button"
+              to="/markets"
+              // onClick="return false"
+            >
               <p>Get Start</p>
             </Link>
           </div>

@@ -22,12 +22,14 @@ import ProtectedRoutes from "./pages/ProtectedRoutes/ProtectedRoutes";
 import AllCoins from "./components/All Coins/AllCoins";
 import PublicTransactions from "./pages/Request/PublicTransactions";
 import MainPage from "./pages/MainPage/MainPage";
+import Scroll from "./pages/Scroll";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <div className="pages">
+          <Scroll />
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />

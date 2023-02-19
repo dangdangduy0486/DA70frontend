@@ -4,7 +4,8 @@ import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBitcoinSign } from "@fortawesome/free-solid-svg-icons";
 import "./Login.css";
 import { useLoginMutation } from "../../features/auth/authApiSlice";
 import { setCredentials } from "../../features/auth/authSlice";
@@ -205,22 +206,30 @@ const Login = () => {
       <section className="vh-100">
         <div className="container-fluid">
           <div className="row">
-            <div className="col-sm-6 text-black">
-              <div className="px-5 ms-xl-4">
-                <Link to="/" className="text-white-50 fw-bold">
-                  <i
-                    className="fas fa-crow fa-2x me-3 pt-5 mt-xl-4"
-                    style={{ color: "#709085" }}
-                  ></i>
+            <div className="col-sm-6">
+              <div
+                className="px-5 py-2 ms-xl-4"
+                style={{
+                  borderBottomStyle: "solid",
+                  borderBlockWidth: 1,
+                  borderBottomColor: "white",
+                }}
+              >
+                <Link to="/" className="text-white fw-bold">
+                  <FontAwesomeIcon
+                    className="text-warning "
+                    icon={faBitcoinSign}
+                    // style={{ fontSize: 30 }}
+                  />
+                  <span>DBCoin</span>
                 </Link>
-                <span className="h1 fw-bold mb-0">Logo</span>
               </div>
 
               <div className="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
                 <form style={{ width: "23rem" }} onSubmit={onSubmit}>
                   <h3
-                    className="fw-normal mb-3 pb-3"
-                    style={{ letterSpacing: "1px" }}
+                    className="fw-bold mb-3 pb-3"
+                    style={{ letterSpacing: "1px", color: "white" }}
                   >
                     Log in
                   </h3>
@@ -236,7 +245,7 @@ const Login = () => {
                       autoComplete="off"
                       required
                     />
-                    <label className="form-label" for="email">
+                    <label className="form-label text-white-50" for="email">
                       Email address
                     </label>
                   </div>
@@ -250,28 +259,29 @@ const Login = () => {
                       value={password}
                       required
                     />
-                    <label className="form-label" for="password">
+                    <label className="form-label text-white-50" for="password">
                       Password
                     </label>
                   </div>
 
-                  <div className="pt-1 mb-4">
-                    <button
-                      className="btn btn-info btn-lg btn-block"
-                      type="submit"
-                    >
+                  <div className="mb-4 text-center">
+                    <button className="btn btn-login fw-bold" type="submit">
                       Login
                     </button>
                   </div>
 
-                  <p className="small mb-5 pb-lg-2">
+                  <p className="small mb-4 pb-lg-2">
                     <Link to="/forgot" className="text-white-50 fw-bold">
                       Forgot password
                     </Link>
                   </p>
-                  <p>
+                  <p className="text-white">
                     Don't have an account?
-                    <Link to="/signup" className="text-white-50 fw-bold">
+                    <Link
+                      to="/signup"
+                      className="text-white-50 fw-bold"
+                      style={{ marginLeft: 3 }}
+                    >
                       Register here
                     </Link>
                   </p>

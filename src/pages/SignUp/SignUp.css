@@ -8,17 +8,15 @@ input::-webkit-input-placeholder {
   line-height: 4;
 }
 .main {
-  margin-top: 56px;
   min-height: 100vh;
   background-size: cover;
-  color: #333;
   font-size: 13px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .form {
-  padding: 32px 24px;
+  padding: 20px 24px;
   border-radius: 1rem;
   box-shadow: 0 2px 5px 0 rgba(51, 62, 73, 0.1);
   position: relative;
@@ -91,7 +89,7 @@ input::-webkit-input-placeholder {
 }
 
 .spacer {
-  margin-top: 36px;
+  margin-top: 2em;
 }
 .error {
   color: red;

@@ -37,17 +37,17 @@ const Footer = () => {
           </div>
           <div className="footet_right">
             <h5>Community</h5>
-            <Link
+            <a
               style={{ textDecoration: "none", color: "rgb(178, 174, 174)" }}
-              to="/markets"
+              href="https://stackoverflow.com/questions/643879/css-to-make-html-page-footer-stay-at-bottom-of-the-page-with-a-minimum-height-b"
             >
-              Market
-            </Link>
+              Minh Bao
+            </a>
             <Link
               style={{ textDecoration: "none", color: "rgb(178, 174, 174)" }}
               to="/converter"
             >
-              Converter
+              Dang Duy
             </Link>
           </div>
         </div>

@@ -9,3 +9,19 @@
 .form-submit {
   width: 100%;
 }
+.btn-login {
+  border: 1px solid var(--yellwo-color);
+  align-self: center;
+  background-color: white;
+  padding: 5px 20px;
+  width: 100%;
+  font-weight: bold;
+}
+
+.btn-login:hover {
+  background-color: var(--yellwo-color);
+  color: white;
+  animation: bounceIn;
+  /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 0.6s;
+}

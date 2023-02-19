@@ -5,8 +5,10 @@
   margin-top: -2rem;
   color: rgb(178, 174, 174);
   width: 100%;
-  /* position: absolute; */
   bottom: 0;
+}
+.footer * {
+  font-size: 12px;
 }
 
 .container_footer {

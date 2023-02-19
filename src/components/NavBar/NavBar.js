@@ -60,6 +60,12 @@ const NavBar = (props) => {
               <Link style={{ textDecoration: "none" }} to="/all-coins">
                 <Nav.Link href="/all-coins">All coins</Nav.Link>
               </Link>
+              <Link style={{ textDecoration: "none" }} to="/transactions">
+                <Nav.Link href="/transactions">Transactions</Nav.Link>
+              </Link>
+              <Link style={{ textDecoration: "none" }} to="/aboutus">
+                <Nav.Link href="/transactions">About us</Nav.Link>
+              </Link>
               <Nav.Item>
                 <li className="nav-item dropdown">
                   <Link
@@ -96,12 +102,9 @@ const NavBar = (props) => {
                   </ul>
                 </li>
               </Nav.Item>
-              <Link style={{ textDecoration: "none" }} to="/transactions">
-                <Nav.Link href="/transactions">Transactions</Nav.Link>
-              </Link>
             </Nav>
           </Navbar.Collapse>
-          <Nav>
+          <Nav className="bao111">
             <SearchBar />
             <CurrencyDetails
               currencyFr={currencyCallback}

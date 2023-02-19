@@ -60,7 +60,6 @@ const Signup = () => {
   });
   return (
     <>
-      <NavBar />
       <section className="main">
         <div className="container h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
@@ -74,7 +73,10 @@ const Signup = () => {
                 <p className="infor">Welcome to DBcoin</p>
                 <div className="spacer"></div>
                 <div className="form-group">
-                  <label htmlFor="fullname" className="form-lable">
+                  <label
+                    htmlFor="fullname"
+                    className="form-lable text-white-50"
+                  >
                     Your name
                   </label>
                   <input
@@ -91,7 +93,7 @@ const Signup = () => {
                   )}
                 </div>
                 <div className="form-group">
-                  <label htmlFor="email" className="form-lable">
+                  <label htmlFor="email" className="form-lable text-white-50">
                     Your email
                   </label>
                   <input
@@ -108,7 +110,10 @@ const Signup = () => {
                   )}
                 </div>
                 <div className="form-group">
-                  <label htmlFor="password" className="form-lable">
+                  <label
+                    htmlFor="password"
+                    className="form-lable text-white-50"
+                  >
                     Your password
                   </label>
                   <input
@@ -125,8 +130,11 @@ const Signup = () => {
                   )}
                 </div>
                 <div className="form-group">
-                  <label htmlFor="password_confi" className="form-lable">
-                    Renter your password
+                  <label
+                    htmlFor="password_confi"
+                    className="form-lable text-white-50"
+                  >
+                    Re-enter your password
                   </label>
                   <input
                     id="password_confi"
@@ -143,17 +151,22 @@ const Signup = () => {
                     </span>
                   )}
                 </div>
-                <button
-                  className="form-submit btn btn-outline-light btn-lg px-5"
-                  type="submit"
-                >
+                <button className=" btn btn-login" type="submit">
                   Sign up
                 </button>
                 <div className="text-center mt-2">
-                  <span> Already have an account?</span>
+                  <span className="text-white-50">
+                    Already have an account?
+                  </span>
                   <span className="space"> </span>
                   <Link className="text-white" to="/login">
                     Login
+                  </Link>
+                </div>
+                <div className="text-center mt-2">
+                  <span className="text-white-50">Back to home?</span>
+                  <Link className="text-white" to="/" style={{ marginLeft: 2 }}>
+                    Home
                   </Link>
                 </div>
               </form>
