@@ -56,8 +56,8 @@ const AdminPage = () => {
           </div>
           <div className="content">
             <div className="cards">
-              <div class="card_infor">
-                <div class="box p-1">
+              <div className="card_infor">
+                <div className="box p-1">
                   <h3>2194</h3>
                   <h5>Students</h5>
                 </div>
@@ -65,8 +65,8 @@ const AdminPage = () => {
                   <img src={users} alt="" className="user11" />
                 </div>
               </div>
-              <div class="card_infor">
-                <div class="box">
+              <div className="card_infor">
+                <div className="box">
                   <h3>2194</h3>
                   <h5>Recharge</h5>
                 </div>
@@ -74,8 +74,8 @@ const AdminPage = () => {
                   <img src={recharge} alt="" className="user11" />
                 </div>
               </div>
-              <div class="card_infor">
-                <div class="box">
+              <div className="card_infor">
+                <div className="box">
                   <h3>2194</h3>
                   <h5>Trading</h5>
                 </div>
@@ -83,8 +83,8 @@ const AdminPage = () => {
                   <img src={trading} alt="" className="user11" />
                 </div>
               </div>
-              <div class="card_infor">
-                <div class="box">
+              <div className="card_infor">
+                <div className="box">
                   <h3>2194</h3>
                   <h5>Coins</h5>
                 </div>
@@ -95,9 +95,9 @@ const AdminPage = () => {
             </div>
             <div className="content-2">
               <div className="users_table">
-                <div class="title">
+                <div className="title">
                   <h2>Users</h2>
-                  <a href="#" class="btn">
+                  <a href="#" className="btn">
                     View All
                   </a>
                 </div>
@@ -113,7 +113,7 @@ const AdminPage = () => {
                     <td>St. James College</td>
                     <td>$120</td>
                     <td>
-                      <a href="#" class="btn">
+                      <a href="#" className="btn">
                         View
                       </a>
                     </td>
@@ -123,7 +123,7 @@ const AdminPage = () => {
                     <td>St. James College</td>
                     <td>$120</td>
                     <td>
-                      <a href="#" class="btn">
+                      <a href="#" className="btn">
                         View
                       </a>
                     </td>
@@ -133,7 +133,7 @@ const AdminPage = () => {
                     <td>St. James College</td>
                     <td>$120</td>
                     <td>
-                      <a href="#" class="btn">
+                      <a href="#" className="btn">
                         View
                       </a>
                     </td>
@@ -143,7 +143,7 @@ const AdminPage = () => {
                     <td>St. James College</td>
                     <td>$120</td>
                     <td>
-                      <a href="#" class="btn">
+                      <a href="#" className="btn">
                         View
                       </a>
                     </td>
@@ -153,7 +153,7 @@ const AdminPage = () => {
                     <td>St. James College</td>
                     <td>$120</td>
                     <td>
-                      <a href="#" class="btn">
+                      <a href="#" className="btn">
                         View
                       </a>
                     </td>
@@ -163,7 +163,7 @@ const AdminPage = () => {
                     <td>St. James College</td>
                     <td>$120</td>
                     <td>
-                      <a href="#" class="btn">
+                      <a href="#" className="btn">
                         View
                       </a>
                     </td>
@@ -173,7 +173,7 @@ const AdminPage = () => {
               <div className="request_table">
                 <div className="title">
                   <h2>Users</h2>
-                  <a href="#" class="btn">
+                  <a href="#" className="btn">
                     View All
                   </a>
                 </div>
@@ -189,7 +189,7 @@ const AdminPage = () => {
                     <td>St. James College</td>
                     <td>$120</td>
                     <td>
-                      <a href="#" class="btn">
+                      <a href="#" className="btn">
                         View
                       </a>
                     </td>
@@ -199,7 +199,7 @@ const AdminPage = () => {
                     <td>St. James College</td>
                     <td>$120</td>
                     <td>
-                      <a href="#" class="btn">
+                      <a href="#" className="btn">
                         View
                       </a>
                     </td>
@@ -209,7 +209,7 @@ const AdminPage = () => {
                     <td>St. James College</td>
                     <td>$120</td>
                     <td>
-                      <a href="#" class="btn">
+                      <a href="#" className="btn">
                         View
                       </a>
                     </td>

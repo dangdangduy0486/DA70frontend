@@ -1,14 +1,12 @@
 import { Tabs } from "antd";
-
 import NavBar from "../../components/NavBar/NavBar";
-
 import "./Request.css";
 import FundingRequest from "./FundingRequest";
 import SpotRequest from "./SpotRequest";
-import PublicTransactions from "./PublicTransactions";
 import Footer from "../../components/Footer/Footer";
 import useAuth from "../../hooks/useAuth";
 import ErrorPage from "../ErrorPage/ErrorPage";
+
 const Request = () => {
   const {email, role} = useAuth();
   if(!email || role !== "admin"){

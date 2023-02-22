@@ -76,7 +76,7 @@ const PublicTransactions = () => {
       <NavBar currencyFr={callback} />
       <div className="mb-4 user-request-table-container">
         <table
-          class="table table-dark table-hover transactions-table user-request-table"
+          className="table table-dark table-hover transactions-table user-request-table"
           style={{ height: "100vh" }}
         >
           <thead>
@@ -127,10 +127,7 @@ const PublicTransactions = () => {
                     </td>
                     <td>{rs.type.toUpperCase()}</td>
                     <td>
-                      <CoinSymbols
-                        ids={rs.firstUnit}
-                        amount={rs.amount}
-                      />
+                      <CoinSymbols ids={rs.firstUnit} amount={rs.amount} />
                     </td>
                     <td>
                       <span className="text-muted">{`${

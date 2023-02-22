@@ -8,6 +8,7 @@ import "./UserInfo.css";
 import useAuth from "../../hooks/useAuth";
 import { useGetUserQuery } from "../../features/user/userApiSlice";
 import Loading from "../Loading/Loading";
+import axios from "axios";
 
 const UserInfor = () => {
   const { email, role } = useAuth();
@@ -18,6 +19,22 @@ const UserInfor = () => {
   let parser = new DOMParser();
   let doc = parser.parseFromString(data.QR, "text/html");
   document.getElementsByClassName("QRCode_container").innerHTML = doc;
+  const token = localStorage.getItem("token");
+  const opts = {
+    headers: {
+      Authorization: token ? `Bearer ${token}` : "",
+    },
+  };
+
+  console.log(token);
+  const handleUploadAvatar = (e) => {
+    e.preventDefault();
+
+    axios
+      .post("/api/user/user-info/upload", opts)
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
+  };
 
   return (
     <>
@@ -32,6 +49,16 @@ const UserInfor = () => {
               <div className="card">
                 <div className="card-header">
                   <img src={process.env.PUBLIC_URL + profile} alt="" />
+                </div>
+                <div>
+                  <form
+                    onSubmit={handleUploadAvatar}
+                    method="post"
+                    enctype="multipart/form-data"
+                  >
+                    <input type="file" name="avatar" />
+                    <button type="submit">Upload avatar</button>
+                  </form>
                 </div>
                 <div className="card-body">
                   <p>

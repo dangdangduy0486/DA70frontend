@@ -33,6 +33,7 @@ const NavBar = (props) => {
   };
 
   const { email } = useAuth();
+  console.log(email);
 
   /*********************/
 

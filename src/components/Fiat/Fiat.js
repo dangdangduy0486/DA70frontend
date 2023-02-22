@@ -71,7 +71,7 @@ const Fiat = () => {
                 <h2>Fiat</h2>
               </div>
               <div className="container-fluid">
-                <table class="table">
+                <table className="table">
                   <thead>
                     <tr>
                       <th scope="col">#</th>
