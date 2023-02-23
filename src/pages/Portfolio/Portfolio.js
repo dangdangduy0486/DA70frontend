@@ -6,13 +6,13 @@ import "./portfolio.css";
 
 const Portfolio = () => {
   const { data, isError } = useGetPortfolioQuery();
-  console.log(data)
+  console.log(data);
 
   if (isError) return <Loading />;
   return (
     <>
       <div className="portfolio-table-container">
-        <table class="table table-dark table-hover portfolio-table">
+        <table className="table table-dark table-hover portfolio-table">
           <thead>
             <tr>
               <th scope="col">#</th>

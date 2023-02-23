@@ -111,9 +111,9 @@ const Funding = () => {
       <NavBar />
       <section className="container_charge">
         <div className="container_chargeform">
-          <h4 className="text-center pe-1">FUNDING</h4>
+          <h4 className="text-center pe-1 fw-bold">FUNDING</h4>
           <form className="form_charge" onSubmit={() => HandleSubmit()}>
-            <div className="chargeform_group">
+            {/* <div className="chargeform_group">
               <label htmlFor="amount">Your amount</label>
               <input
                 type="number"
@@ -159,7 +159,60 @@ const Funding = () => {
               <button
                 type="submit"
                 onClick={HandleSubmit}
-                className="btn_recharge"
+                className="btn_recharge btn btn-outline-warning"
+              >
+                Send
+              </button>
+            </div> */}
+            <div className="form-floating mb-4">
+              <select
+                className="form-select"
+                id="floatingFiat"
+                aria-label="Floating label select example"
+                name="currency"
+                onChange={(e) => {
+                  const selectCurrency = e.target.value;
+                  setCurrencyID(selectCurrency);
+                }}
+              >
+                <option selected>Open this select menu</option>
+                {filtered.map((unit) => (
+                  <option value={unit.symbol}>{unit.name}</option>
+                ))}
+              </select>
+              <label for="floatingFiat">Fiat</label>
+            </div>
+            <div className="form-floating mb-4">
+              <input
+                type="text"
+                className="form-control"
+                id="floatingAmount"
+                placeholder="Your amount"
+                onChange={handleOnChange}
+              />
+              <label htmlFor="floatingAmount">Amount</label>
+            </div>
+            <div className="form-floating mb-4">
+              <select
+                className="form-select"
+                id="floatingCreditCard"
+                onChange={(e) => {
+                  const selectCreditCard = e.target.value;
+                  setCreditcard(selectCreditCard);
+                }}
+              >
+                <option selected>Open this select menu</option>
+                {ListCreditCard.map((unit) => (
+                  <option value={unit.value}>{unit.value}</option>
+                ))}
+              </select>
+              <label for="floatingCreditCard">Credit cart</label>
+            </div>
+            <div className="chargeform_group mb-4">
+              <button
+                type="submit"
+                onClick={HandleSubmit}
+                className="btn_recharge btn btn-outline-warning"
               >
                 Send
               </button>

@@ -492,11 +492,11 @@ const CoinInfo = (props) => {
                 <h3>BUY NOW</h3>
                 <div>
                   <span className="text-muted">Enter your amount: </span>
-                  <div class="input-group mb-3">
+                  <div className="input-group mb-3">
                     <input
                       type="number"
                       onChange={handleAmountChange}
-                      class="form-control"
+                      className="form-control"
                       aria-label="Dollar amount (with dot and two decimal places)"
                     />
                   </div>
@@ -624,7 +624,7 @@ const CoinInfo = (props) => {
           </div>
           <div>
             <table
-              class="table table-hover"
+              className="table table-hover"
               style={{ width: "100%", backgroundColor: "white" }}
             >
               <thead>
