@@ -1,7 +1,7 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faX, faCheck, faCircle } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faCircle } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
 import moment from "moment/moment";
 import getCurrencySymbol from "currency-symbols";
@@ -134,6 +134,7 @@ const P2PSell = () => {
                   <td>{moment(value.date).fromNow()}</td>
                   <td>
                     <span
+                      style={{ cursor: "pointer" }}
                       className="text-success me-3"
                       id="approved-check"
                       onClick={() => handleClientRequest(value)}

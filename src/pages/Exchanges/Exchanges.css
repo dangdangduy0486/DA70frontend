@@ -1,10 +1,31 @@
 .container_exchanges {
   min-height: calc(100vh - 56px);
-  background-color: red;
   margin-bottom: 32px;
   padding: 10px;
+}
+.container_exchanges table tr th:nth-child(1),
+.container_exchanges table tr td:nth-child(1) {
+  text-align: center;
 }
 .container_exchanges table tr th:nth-child(n + 3),
 .container_exchanges table tr td:nth-child(n + 3) {
   text-align: center;
+}
+.container_exchanges table tr:nth-child(n + 1) {
+  border-bottom: 1px solid white;
+}
+@media screen and (max-width: 768px) {
+  .container_exchanges * {
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .container_exchanges * {
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .container_exchanges * {
+    font-size: 11px;
+  }
 }

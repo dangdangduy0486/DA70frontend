@@ -5,19 +5,18 @@ import { faX, faCheck, faCircle } from "@fortawesome/free-solid-svg-icons";
 import moment from "moment/moment";
 import { toast } from "react-toastify";
 import getCurrencySymbol from "currency-symbols";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
-import useAuth from "../../hooks/useAuth";
+// import useAuth from "../../hooks/useAuth";
 import { useGetUserOwnRequestQuery } from "../../features/user/userApiSlice";
 import CoinSymbols from "../../components/All Coins/CoinSymbols.js";
 import "./P2PTrading.css";
 
 const P2PRequest = () => {
-  const navigate = useNavigate();
   const [p2pData, setP2PData] = useState([]);
   const [status, setStatus] = useState(null);
   const [reqID, setReqID] = useState(null);
-  const { email } = useAuth();
+  // const { email } = useAuth();
 
   const handleResponseApproved = async (value) => {
     await setReqID(value._id);
@@ -208,6 +207,7 @@ const P2PRequest = () => {
                         <span
                           className="text-success me-3"
                           id="approved-check"
+                          style={{ cursor: "pointer" }}
                           onClick={() => handleResponseApproved(value)}
                           key={value._id}
                         >
@@ -218,6 +218,7 @@ const P2PRequest = () => {
                           id="denided-check"
                           onClick={() => handleResponseDenided(value)}
                           key={value._id}
+                          style={{ cursor: "pointer" }}
                         >
                           <FontAwesomeIcon icon={faX} />
                         </span>

@@ -23,10 +23,9 @@ const Aboutus = () => {
                 Developer & <span>Designer</span>
               </h5>
               <p>
-                I am a back-end developer. I can provide clean code and perfect
-                design. I am a back-end developer. I can provide clean code and
-                perfect design. I am a back-end developer. I can provide clean
-                code and perfect design
+                I am a back-end developer. I'm from Dong Nai city and I like
+                playing soccer with my friends. I can provide clean code and
+                perfect design.
               </p>
               <a href="https://www.facebook.com/duya22105" target="_blank">
                 Chat me
@@ -41,10 +40,9 @@ const Aboutus = () => {
                 Developer & <span>Designer</span>
               </h5>
               <p>
-                I am a front-end developer. I can provide clean code and perfect
-                design. I am a back-end developer. I can provide clean code and
-                perfect design. I am a back-end developer. I can provide clean
-                code and perfect design
+                I am a front-end developer. I'm from Quang Ngai city and I like
+                playing badminton with my friends. I can provide clean code and
+                perfect design.
               </p>
               <a
                 href="https://www.facebook.com/profile.php?id=100016835077654"

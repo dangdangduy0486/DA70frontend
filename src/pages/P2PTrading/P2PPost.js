@@ -5,8 +5,8 @@ import { useFormik } from "formik";
 import useAuth from "../../hooks/useAuth";
 import * as Yup from "yup";
 import getCurrencySymbol from "currency-symbols";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowsRotate } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faArrowsRotate } from "@fortawesome/free-solid-svg-icons";
 
 import { useGetUserWalletQuery } from "../../features/user/userApiSlice";
 import "./P2PTrading.css";
@@ -16,7 +16,7 @@ const P2PPost = () => {
   // const [p2pRequest, setP2PRequest] = useState([]);
   const [assetChoose, setAssetChoose] = useState("bitcoin");
   const [fiatChoose, setFiatChoose] = useState("usd");
-  const [rates, setRates] = useState([]);
+  // const [rates, setRates] = useState([]);
   const [lowRate, setLowRate] = useState([]);
   const [highRate, setHighRate] = useState([]);
   const [methodChoose, setMethodChoose] = useState("");
@@ -73,6 +73,7 @@ const P2PPost = () => {
       )
       .then((response) => {
         toast.success(response.data.message);
+        window.location.reload();
       })
       .catch((error) => {
         console.log(error);

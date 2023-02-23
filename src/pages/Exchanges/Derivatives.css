@@ -1,0 +1,31 @@
+.container_derivatives {
+  min-height: calc(100vh - 56px);
+  margin-bottom: 32px;
+  padding: 10px;
+}
+.container_derivatives table tr th:nth-child(1),
+.container_derivatives table tr td:nth-child(1) {
+  text-align: center;
+}
+.container_derivatives table tr th:nth-child(n + 3),
+.container_derivatives table tr td:nth-child(n + 3) {
+  text-align: center;
+}
+.container_derivatives table tr:nth-child(n + 1) {
+  border-bottom: 1px solid white;
+}
+@media screen and (max-width: 768px) {
+  .container_derivatives * {
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .container_derivatives * {
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .container_derivatives * {
+    font-size: 11px;
+  }
+}

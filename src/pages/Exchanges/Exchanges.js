@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import NavBar from "../../components/NavBar/NavBar";
 import Loading from "../Loading/Loading";
+import { FloatButton } from "antd";
 import { useGetExchangesDetailsQuery } from "../../features/coins/coinsApiSlice";
 import Footer from "../../components/Footer/Footer";
 import "./Exchanges.css";
@@ -33,7 +34,7 @@ const Exchanges = () => {
     <>
       <NavBar />
       <div className="container_exchanges">
-        <table className="table-dark w-100">
+        <table className="table-dark table-hover w-100">
           <thead>
             <tr>
               <th scope="col">#</th>
@@ -50,7 +51,7 @@ const Exchanges = () => {
                   <tr key={exchange.id}>
                     <td>{exchange.trust_score_rank}</td>
                     <td>
-                      <span>
+                      <span style={{ marginRight: 6 }}>
                         <img src={exchange.image} alt="" />
                       </span>
                       <span>{exchange.name}</span>
@@ -101,6 +102,7 @@ const Exchanges = () => {
               ))}
           </tbody>
         </table>
+        <FloatButton.BackTop />
       </div>
       <Footer />
     </>

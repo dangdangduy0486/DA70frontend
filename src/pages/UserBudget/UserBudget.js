@@ -1,7 +1,7 @@
 import React from "react";
 import Footer from "../../components/Footer/Footer";
 import NavBar from "../../components/NavBar/NavBar";
-import { Tabs, Space } from "antd";
+import { Tabs } from "antd";
 
 import "./UserBudget.css";
 import Fiat from "../../components/Fiat/Fiat";
@@ -15,11 +15,7 @@ const UserBudget = () => {
     <>
       <NavBar />
       <section className="userBudget">
-        <Tabs
-          defaultActiveKey="1"
-          tabPosition="left"
-          className="userBudget"
-        >
+        <Tabs defaultActiveKey="1" tabPosition="left" className="userBudget">
           <Tabs.TabPane tab="Overview" key="1">
             <Overview />
           </Tabs.TabPane>

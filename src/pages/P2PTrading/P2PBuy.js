@@ -134,6 +134,7 @@ const P2PBuy = () => {
                       <span
                         className="text-success me-3"
                         id="approved-check"
+                        style={{ cursor: "pointer" }}
                         onClick={() => handleClientRequest(value)}
                         key={value._id}
                         data-bs-toggle="modal"

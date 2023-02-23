@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-
+import "./Derivatives.css";
 import NavBar from "../../components/NavBar/NavBar";
 import Loading from "../Loading/Loading";
 import { useGetDerivativesDetailsQuery } from "../../features/coins/coinsApiSlice";
@@ -21,8 +21,8 @@ const Derivatives = () => {
   return (
     <>
       <NavBar />
-      <div className="container-fluid mt-5">
-        <table className="table-dark mt-5 w-100">
+      <div className="container_derivatives ">
+        <table className="table-dark w-100">
           <thead>
             <tr>
               <th scope="col">#</th>

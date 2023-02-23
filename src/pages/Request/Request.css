@@ -24,7 +24,7 @@
 }
 
 .user-request-table-container::-webkit-scrollbar {
-  width: 10px;
+  width: 0px;
 }
 
 .user-request-table-container::-webkit-scrollbar-thumb {

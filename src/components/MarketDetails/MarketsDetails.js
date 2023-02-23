@@ -1,12 +1,10 @@
 import axios from "axios";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowTrendUp,
   faArrowTrendDown,
   faArrowTurnDown,
-  faArrowRightToBracket,
-  faStar,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import getCurrencySymbol from "currency-symbols";
@@ -18,7 +16,6 @@ import Loading from "../../pages/Loading/Loading";
 const MarketsDetails = ({ markets, symbol, categoryFr }) => {
   const [categories, setCategories] = useState([]);
   const [selected, setSelected] = useState("All Categories");
-  const [selectedCoin, setSelectedCoin] = useState();
 
   const { email } = useAuth();
 
@@ -279,25 +276,32 @@ const MarketsDetails = ({ markets, symbol, categoryFr }) => {
                     </button>
                     <ul
                       className="dropdown-menu"
-                      style={{ textAlign: "center" }}
+                      style={{
+                        textAlign: "center",
+                      }}
                     >
                       {email ? (
                         <Link
                           style={{
                             textDecoration: "none",
-                            display: "flex",
+                            display: "block",
+                            color: "black",
+                            textAlign: "center",
                           }}
                           to={`/coins/${market.id}`}
                         >
-                          <span>Want to buy {market.id}</span>
+                          <span style={{ textAlign: "center" }}>
+                            Want to buy {market.id}
+                          </span>
                         </Link>
                       ) : (
                         <li>
-                          Please login first!
+                          <span style={{ display: "block" }}>
+                            Please login first!
+                          </span>
                           <Link
                             style={{
                               textDecoration: "none",
-                              display: "flex",
                             }}
                             to={`/login`}
                           >
