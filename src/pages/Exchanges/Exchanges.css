@@ -1,0 +1,10 @@
+.container_exchanges {
+  min-height: calc(100vh - 56px);
+  background-color: red;
+  margin-bottom: 32px;
+  padding: 10px;
+}
+.container_exchanges table tr th:nth-child(n + 3),
+.container_exchanges table tr td:nth-child(n + 3) {
+  text-align: center;
+}

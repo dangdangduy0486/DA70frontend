@@ -149,7 +149,9 @@ const Mainbonus = () => {
             <Link
               className="letstart_button"
               to="/markets"
-              // onClick="return false"
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
             >
               <p>Get Start</p>
             </Link>

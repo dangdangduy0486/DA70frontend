@@ -1,0 +1,7 @@
+.btn-days {
+  padding: 2px 5px;
+  border: 1px solid black;
+}
+.btn-days:hover {
+  border: 1px solid rgba(53, 162, 235, 0.5);
+}

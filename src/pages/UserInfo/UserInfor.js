@@ -38,6 +38,7 @@ const UserInfor = () => {
 
   return (
     <>
+      <NavBar />
       <section className="page_userinfo ">
         {role === "admin" ? (
           <>

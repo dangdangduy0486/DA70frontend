@@ -136,7 +136,7 @@ const CoinInfo = (props) => {
     <>
       <NavBar currencyFr={callback} vsCurrency={vsCurrency} />
       <section className="coininfor">
-        <Container className="coin_info">
+        <section className="coin_info">
           <div className="row coin_info_main">
             <div className="col-8">
               <div className="row">
@@ -314,7 +314,9 @@ const CoinInfo = (props) => {
               </div>
             </div>
             <div className="col-4">
-              <h6>Info</h6>
+              <h6 style={{ fontWeight: "bold", textAlign: "center" }}>
+                Information
+              </h6>
               <div className="row">
                 <div className="col">Website</div>
                 <div className="col">
@@ -478,12 +480,12 @@ const CoinInfo = (props) => {
               </div>
             </div>
           </div>
-        </Container>
-        <div className=" history-chart overview row">
-          <div className="overview-chart col-8">
+        </section>
+        <div className="history-chart overview row ">
+          <div className="overview-chart col-8 chart-right">
             <HistoryChart coinID={coinID} />
           </div>
-          <div className="col">
+          <div className="col-4 chart-left">
             <div
               className="overview-convert mt-4 mb-4"
               style={{ backgroundColor: "white" }}
@@ -503,14 +505,14 @@ const CoinInfo = (props) => {
                 </div>
                 <div>
                   <span className="text-muted fs-3">Your total: </span>
-                  <span className="fs-3">
+                  <span className="fs-5">
                     {`${
                       getCurrencySymbol(vsCurrency)
                         ? getCurrencySymbol(vsCurrency)
                         : vsCurrency.toUpperCase()
                     } `}
                   </span>
-                  <span className="fs-3" id="spotTotal" name="spotTotal">
+                  <span className="fs-5" id="spotTotal" name="spotTotal">
                     {currentData[0].current_price * amount
                       ? currentData[0].current_price * amount
                       : 0}
@@ -532,8 +534,8 @@ const CoinInfo = (props) => {
               </div>
             </div>
             <div className="overview-statistics">
-              <h3>
-                {vsCurrency.toUpperCase() ? vsCurrency.toUpperCase() : "?"}
+              <h3 className="text-warning" style={{ textAlign: "center" }}>
+                {vsCurrency.toUpperCase() ? vsCurrency.toUpperCase() : "?"}{" "}
                 Price Statistics
               </h3>
               <div className="overview-statistics-list">
@@ -615,16 +617,16 @@ const CoinInfo = (props) => {
             ></p>
           </div>
         </Container>
-        <Container>
+        <section>
           <div>
-            <h5 className="text-uppercase fs-2">
+            <h5 className="text-uppercase text-center fs-2">
               <span className="text-warning ">{data.name} </span>
               <span className="text-light">Markets</span>
             </h5>
           </div>
-          <div>
+          <div className="table_market-transaction">
             <table
-              className="table table-hover"
+              className="table table-hover "
               style={{ width: "100%", backgroundColor: "white" }}
             >
               <thead>
@@ -681,7 +683,7 @@ const CoinInfo = (props) => {
               </tbody>
             </table>
           </div>
-        </Container>
+        </section>
       </section>
       <Footer />
     </>

@@ -39,16 +39,16 @@ const Footer = () => {
             <h5>Community</h5>
             <a
               style={{ textDecoration: "none", color: "rgb(178, 174, 174)" }}
-              href="https://stackoverflow.com/questions/643879/css-to-make-html-page-footer-stay-at-bottom-of-the-page-with-a-minimum-height-b"
+              href="https://www.facebook.com/profile.php?id=100016835077654"
             >
               Minh Bao
             </a>
-            <Link
+            <a
               style={{ textDecoration: "none", color: "rgb(178, 174, 174)" }}
-              to="/converter"
+              href="https://www.facebook.com/dangduy2105"
             >
               Dang Duy
-            </Link>
+            </a>
           </div>
         </div>
         <div className="copy_right text-center ">@Binance © 2022</div>

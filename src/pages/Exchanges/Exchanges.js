@@ -4,7 +4,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import Loading from "../Loading/Loading";
 import { useGetExchangesDetailsQuery } from "../../features/coins/coinsApiSlice";
 import Footer from "../../components/Footer/Footer";
-
+import "./Exchanges.css";
 const Exchanges = () => {
   const [exchangesData, setExchangesData] = useState([]);
   const [perPage, setPerPage] = useState(100);
@@ -32,8 +32,8 @@ const Exchanges = () => {
   return (
     <>
       <NavBar />
-      <div className="container-fluid mt-5">
-        <table className="table-dark mt-5 w-100">
+      <div className="container_exchanges">
+        <table className="table-dark w-100">
           <thead>
             <tr>
               <th scope="col">#</th>

@@ -3,6 +3,7 @@ import { Link, useNavigation } from "react-router-dom";
 import axios from "axios";
 import "./MenuProfile.css";
 import profile from "../../images/profile.svg";
+import logout from "../../images/logout.svg";
 import info from "../../images/infor.svg";
 import { useGetUserQuery } from "../../features/user/userApiSlice";
 import { useSendLogoutMutation } from "../../features/auth/authApiSlice";
@@ -72,10 +73,10 @@ const MenuProfile = ({ email }) => {
             </>
           ) : null}
           <li>
-            <Link style={{ textDecoration: "none" }} to="/">
-              <p className="text-danger" onClick={handleLogout}>
-                Logout
-              </p>
+            <Link className="sub-menu-link" to="/">
+              <img src={logout} alt="" />
+              <p onClick={handleLogout}>Logout</p>
+              <span></span>
             </Link>
           </li>
         </ul>

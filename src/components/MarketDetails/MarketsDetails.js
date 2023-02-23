@@ -10,7 +10,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import getCurrencySymbol from "currency-symbols";
-
 import "./MarkestDetails.css";
 import useAuth from "../../hooks/useAuth";
 import { useGetPortfolioQuery } from "../../features/user/userApiSlice";
@@ -126,7 +125,6 @@ const MarketsDetails = ({ markets, symbol, categoryFr }) => {
         <table className="table_markets table table-hover">
           <thead>
             <tr>
-              <td></td>
               <th id="market_rank">#</th>
               <th>Coin</th>
               <th></th>
@@ -144,23 +142,6 @@ const MarketsDetails = ({ markets, symbol, categoryFr }) => {
             {markets &&
               markets.map((market, index) => (
                 <tr key={index}>
-                  <td
-                  // className={`
-                  //   ${currentData.portfolio.map((pro) => {
-                  //     if (market.id === pro.coinName)
-                  //       return "active-portfolio portfolio";
-                  //     else return "portfolio";
-                  //   })}`}
-                  >
-                    <FontAwesomeIcon
-                      icon={faStar}
-                    //   onClick={() => {
-                    //     const selectedCoin = market;
-                    //     setSelectedCoin(selectedCoin);
-                    //     portfolioCoin();
-                    //   }}
-                    />
-                  </td>
                   <td data-label="#">
                     <p>
                       {market.market_cap_rank ? market.market_cap_rank : "?"}
@@ -290,7 +271,7 @@ const MarketsDetails = ({ markets, symbol, categoryFr }) => {
                   <td>
                     <button
                       type="button"
-                      className="btn btn-secondary"
+                      className="btn btn-secondary btn-buy"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >

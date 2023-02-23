@@ -1,3 +1,6 @@
+.menu-profile {
+  z-index: 1;
+}
 .menu-trigger {
   position: relative;
 }
@@ -98,7 +101,6 @@ a {
 .sub-menu-wrap.open-menu {
   max-height: 400px;
 }
-
 
 /* .dropdown-menu-profile li {
   width: 170px;

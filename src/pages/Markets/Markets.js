@@ -77,6 +77,7 @@ const Markets = (props) => {
       setPage(1);
       setIsLoading(true);
       localStorage.removeItem("markets");
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
@@ -87,6 +88,7 @@ const Markets = (props) => {
       setPage(TotalNumber);
       setIsLoading(true);
       localStorage.removeItem("markets");
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
@@ -97,6 +99,7 @@ const Markets = (props) => {
       setPage(page + 1);
       setIsLoading(true);
       localStorage.removeItem("markets");
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
@@ -107,6 +110,7 @@ const Markets = (props) => {
       setPage(page - 1);
       setIsLoading(true);
       localStorage.removeItem("markets");
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
@@ -115,10 +119,12 @@ const Markets = (props) => {
       setPage(TotalNumber - 1);
       setIsLoading(true);
       localStorage.removeItem("markets");
+      window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
       setPage(page + 3);
       setIsLoading(true);
       localStorage.removeItem("markets");
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
@@ -127,10 +133,12 @@ const Markets = (props) => {
       setPage(TotalNumber + 1);
       setIsLoading(true);
       localStorage.removeItem("markets");
+      window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
       setPage(page - 2);
       setIsLoading(true);
       localStorage.removeItem("markets");
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
   //handle loading and error

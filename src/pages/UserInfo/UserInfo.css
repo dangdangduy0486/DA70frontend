@@ -1,6 +1,5 @@
 .page_userinfo {
-  margin-top: 56px;
-  min-height: 100vh;
+  min-height: calc(100vh - 56px);
   padding: 0;
   box-sizing: border-box;
   background: url("../../images/Moon.svg");
@@ -12,7 +11,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: calc(100vh - 56px);
   position: relative;
 }
 
@@ -36,5 +35,5 @@
 
 .QRCode_container div * {
   margin-left: 20px;
-  height: 350px
+  height: 350px;
 }

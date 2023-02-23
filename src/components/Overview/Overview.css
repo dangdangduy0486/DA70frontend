@@ -38,12 +38,14 @@ td {
   overflow-y: scroll;
 }
 
-.overview-wallet-table th,
-td {
+.overview-wallet-table th {
   border-collapse: collapse;
   height: 20px;
 }
-
+.overview-wallet-table td {
+  border-collapse: collapse;
+  height: 20px;
+}
 
 .custom-scrollbar::-webkit-scrollbar-track {
   padding: 2px 0;

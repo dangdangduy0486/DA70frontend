@@ -13,7 +13,7 @@ import {
 import { Line } from "react-chartjs-2";
 import moment from "moment";
 import { useEffect, useState } from "react";
-
+import "./HistoryChart.css";
 import Loading from "../../pages/Loading/Loading";
 import { useGetCoinsHistoryChartQuery } from "../../features/coins/coinsApiSlice";
 
@@ -82,88 +82,74 @@ const HistoryChart = (coinID) => {
 
   return (
     <>
-      <div
-        className="btn-group"
-        role="group"
-        aria-label="Basic radio toggle button group"
-      >
-        <input
-          type="radio"
-          className="btn-check"
-          name="7days"
-          id="7days"
-          autoComplete="off"
-          onClick={handleChangeDays}
-          value={7}
-        />
-        <label className="btn btn-outline-primary" htmlFor="7days">
-          7d
-        </label>
-
-        <input
-          type="radio"
-          className="btn-check"
-          name="14days"
-          id="14days"
-          autoComplete="off"
-          onClick={handleChangeDays}
-          value={14}
-        />
-        <label className="btn btn-outline-primary" htmlFor="14days">
-          14d
-        </label>
-
-        <input
-          type="radio"
-          className="btn-check"
-          name="30days"
-          id="30days"
-          autoComplete="off"
-          onClick={handleChangeDays}
-          value={30}
-        />
-        <label className="btn btn-outline-primary" htmlFor="30days">
-          30d
-        </label>
-
-        <input
-          type="radio"
-          className="btn-check"
-          name="90days"
-          id="90days"
-          autoComplete="off"
-          onClick={handleChangeDays}
-          value={90}
-        />
-        <label className="btn btn-outline-primary" htmlFor="90days">
-          90d
-        </label>
-
-        <input
-          type="radio"
-          className="btn-check"
-          name="180days"
-          id="180days"
-          autoComplete="off"
-          onClick={handleChangeDays}
-          value={180}
-        />
-        <label className="btn btn-outline-primary" htmlFor="180days">
-          180d
-        </label>
-
-        <input
-          type="radio"
-          className="btn-check"
-          name="maxdays"
-          id="maxdays"
-          autoComplete="off"
-          onClick={handleChangeDays}
-          value={"max"}
-        />
-        <label className="btn btn-outline-primary" htmlFor="maxdays">
-          max
-        </label>
+      <div className="container_days">
+        <button
+          style={{
+            backgroundColor: days === 7 ? "rgba(53, 162, 235, 0.5)" : "white",
+          }}
+          className="btn-days"
+          onClick={(e) => {
+            setDays(7);
+          }}
+        >
+          7days
+        </button>
+        <button
+          style={{
+            backgroundColor: days === 14 ? "rgba(53, 162, 235, 0.5)" : "white",
+          }}
+          className="btn-days"
+          onClick={(e) => {
+            setDays(14);
+          }}
+        >
+          14days
+        </button>
+        <button
+          style={{
+            backgroundColor: days === 30 ? "rgba(53, 162, 235, 0.5)" : "white",
+          }}
+          className="btn-days"
+          onClick={(e) => {
+            setDays(30);
+          }}
+        >
+          30days
+        </button>
+        <button
+          style={{
+            backgroundColor: days === 90 ? "rgba(53, 162, 235, 0.5)" : "white",
+          }}
+          className="btn-days"
+          onClick={(e) => {
+            setDays(90);
+          }}
+        >
+          90days
+        </button>
+        <button
+          style={{
+            backgroundColor: days === 180 ? "rgba(53, 162, 235, 0.5)" : "white",
+          }}
+          className="btn-days"
+          onClick={(e) => {
+            setDays(180);
+          }}
+        >
+          180days
+        </button>
+        <button
+          style={{
+            backgroundColor:
+              days === "max" ? "rgba(53, 162, 235, 0.5)" : "white",
+          }}
+          className="btn-days"
+          onClick={(e) => {
+            setDays("max");
+          }}
+        >
+          Max
+        </button>
       </div>
       <div className="history">
         <Line options={options} data={dt} />
