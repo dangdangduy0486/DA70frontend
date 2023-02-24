@@ -7,14 +7,8 @@ import Loading from "../Loading/Loading";
 const EmailVerify = () => {
   const [validUrl, setValidUrl] = useState(true);
   const url = "";
-  const token = localStorage.getItem("token");
-  const opts = {
-    headers: {
-      Authorization: token ? `Bearer ${token}` : "",
-    },
-  };
   useEffect(() => {
-    axios.get(url, opts).catch((error) => {
+    axios.get(url).catch((error) => {
       setValidUrl(false);
     });
     setValidUrl(true);

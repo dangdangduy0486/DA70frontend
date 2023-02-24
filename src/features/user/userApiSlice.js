@@ -47,7 +47,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
         },
       }),
     }),
-    postForgotPassword: build.mutation({
+    postForgotPassword: build.query({
       query: (initialPost) => ({
         url: `api/auth/forgot-password`,
         method: "POST",
@@ -56,9 +56,15 @@ export const userApiSlice = apiSlice.injectEndpoints({
         },
       }),
     }),
-    //--------------------------------------
-    //--------------------------------------
-
+    patchNewPassword: build.mutation({
+      query: (initialPost) => ({
+        url: `/api/auth/reset-password/${initialPost.email}`,
+        method: "PATCH",
+        body: {
+          newpassword: initialPost.newpassword,
+        },
+      }),
+    }),
     //--------------------------------------
     patchUserByAdmin: build.mutation({
       query: (initialPost) => ({
@@ -194,6 +200,7 @@ export const {
   //
   usePostSignUpMutation,
   usePostForgotPasswordMutation,
+  usePatchNewPasswordMutation,
   //
   // Admin
   usePatchUserByAdminMutation,

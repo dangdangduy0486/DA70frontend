@@ -1,34 +1,28 @@
 import React from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
+import { usePatchNewPasswordMutation } from "../../features/user/userApiSlice";
 const NewPassword = () => {
   const history = useNavigate();
-  const url = "";
-  const token = localStorage.getItem("token");
-  const opts = {
-    headers: {
-      Authorization: token ? `Bearer ${token}` : "",
-    },
-  };
+  const { email } = useParams();
+
+  const [patchNewPassword] = usePatchNewPasswordMutation();
+
   const onSubmit = async (values) => {
     const { newpassword } = values;
     try {
-      await axios
-        .patch(url, { newpassword }, opts)
-        .then(() => {
-          toast.success("Change password completed!!");
-          history("/login");
-        })
-        .catch((error) => {
-          if (error && error.response) {
-            toast.error(error);
-          }
-        });
+      await patchNewPassword({ email, newpassword }).unwrap();
+      toast.success("Change password completed!!");
+      history("/login");
     } catch (error) {
-      toast.error(error);
+      if (error.status === 500) {
+        return null;
+      } else {
+        toast.error(error.data.message);
+      }
     }
   };
 

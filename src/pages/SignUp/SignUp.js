@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -12,28 +11,12 @@ const Signup = () => {
 
   const [postSignUp] = usePostSignUpMutation();
 
-  const url = "api/auth/signup";
-  const token = localStorage.getItem("token");
-  const opts = {
-    headers: {
-      Authorization: token ? `Bearer ${token}` : "",
-    },
-  };
   const onSubmit = async (values) => {
     const { fullname, email, password } = values;
     try {
       await postSignUp({ fullname, email, password }).unwrap();
       toast.success("Sign up success");
       history("/login");
-      // await axios
-      //   .post(url, { fullname, email, password }, opts)
-      //   .then((response) => {
-      //     toast.success(response.data.message);
-      //     history("/login");
-      //   })
-      //   .catch((err) => {
-      //     if (err && err.response) console.log("Error", err);
-      //   });
     } catch (error) {
       if (error.status === 500) {
         return null;
