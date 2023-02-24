@@ -7,10 +7,6 @@ import "./UserBudget.css";
 import Fiat from "../../components/Fiat/Fiat";
 import Overview from "../../components/Overview/Overview";
 const UserBudget = () => {
-  // const history = useHistory();
-  // const handleTabClick = (key) => {
-  //   history.push(`/${key}`);
-  // };
   return (
     <>
       <NavBar />

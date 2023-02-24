@@ -51,6 +51,7 @@ const P2PRequest = () => {
   const { data: p2pData } = useGetUserOwnRequestQuery();
 
   if (!p2pData) return <Loading />;
+  console.log(p2pData);
   return (
     <>
       <div className="P2P-table-container">

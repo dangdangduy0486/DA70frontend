@@ -2,9 +2,7 @@ import { apiSlice } from "../../app/api/apiSlice";
 
 export const userApiSlice = apiSlice.injectEndpoints({
   endpoints: (build) => ({
-    getCurrency: build.mutation({
-
-    }),
+    getCurrency: build.mutation({}),
     getUser: build.query({
       query: () => {
         return {
@@ -50,7 +48,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
         },
       }),
     }),
-    postForgotPassword: build.query({
+    postForgotPassword: build.mutation({
       query: (initialPost) => ({
         url: `api/auth/forgot-password`,
         method: "POST",
@@ -108,7 +106,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
     getUserOwnRequest: build.query({
       query: () => {
         return {
-          url: `api/user/request/review/own`,
+          url: `api/user/request-p2p/review/own`,
           method: "GET",
         };
       },
