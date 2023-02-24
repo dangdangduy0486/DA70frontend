@@ -1,4 +1,3 @@
-import axios from "axios";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -12,7 +11,7 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import moment from "moment";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./HistoryChart.css";
 import Loading from "../../pages/Loading/Loading";
 import { useGetCoinsHistoryChartQuery } from "../../features/coins/coinsApiSlice";
@@ -29,35 +28,12 @@ ChartJS.register(
 );
 
 const HistoryChart = (coinID) => {
-  // const [chartValue, setChartValue] = useState(null);
   const [days, setDays] = useState(7);
-
-  // const url = `https://api.coingecko.com/api/v3/coins/${coinID.coinID}/market_chart?vs_currency=usd&days=${days}`;
-  // const token = localStorage.getItem("token");
-  // const opts = {
-  //   headers: {
-  //     Authorization: token ? `Bearer ${token}` : "",
-  //   },
-  // };
-  // useEffect(() => {
-  //   axios
-  //     .get(url, opts)
-  //     .then((response) => {
-  //       setChartValue(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // });
   const { data, error, isLoading } = useGetCoinsHistoryChartQuery({
     coinID: coinID.coinID,
     days: days,
   });
   if (!data || error || isLoading) return <Loading />;
-
-  const handleChangeDays = (e) => {
-    setDays(e.target.value);
-  };
 
   const coinChartData = data.prices.map((value) => ({
     x: value[0],

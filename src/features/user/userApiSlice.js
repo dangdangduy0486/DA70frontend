@@ -25,6 +25,61 @@ export const userApiSlice = apiSlice.injectEndpoints({
         };
       },
     }),
+    patchUserInfo: build.mutation({
+      query: (initialPost) => ({
+        url: `api/user/user-info/update`,
+        method: "PATCH",
+        body: {
+          fullname: initialPost.fullname,
+          image: initialPost.image,
+        },
+      }),
+    }),
+    //--------------------------------------
+    postSignUp: build.mutation({
+      query: (initialPost) => ({
+        url: `api/auth/signup`,
+        method: "POST",
+        body: {
+          fullname: initialPost.fullname,
+          email: initialPost.email,
+          password: initialPost.password,
+        },
+      }),
+    }),
+    postForgotPassword: build.mutation({
+      query: (initialPost) => ({
+        url: `api/auth/forgot-password`,
+        method: "POST",
+        body: {
+          email: initialPost.email,
+        },
+      }),
+    }),
+    //--------------------------------------
+    //--------------------------------------
+
+    //--------------------------------------
+    patchUserByAdmin: build.mutation({
+      query: (initialPost) => ({
+        url: `/api/admin/user-management/update`,
+        method: "PATCH",
+        body: {
+          email: initialPost.email,
+          fullname: initialPost.fullname,
+        },
+      }),
+    }),
+    deleteUserByAdmin: build.mutation({
+      query: (initialPost) => ({
+        url: `/api/admin/user-management/delete`,
+        method: "DELETE",
+        body: {
+          email: initialPost.email,
+        },
+      }),
+    }),
+    //--------------------------------------
     getUserFundingRequest: build.query({
       query: () => {
         return {
@@ -89,12 +144,61 @@ export const userApiSlice = apiSlice.injectEndpoints({
         };
       },
     }),
+    //Spot or Funding
+    postClientRequest: build.mutation({
+      query: (initialPost) => ({
+        url: `api/user/request/create/${initialPost.reqType}`,
+        method: "POST",
+        body: { ...initialPost },
+      }),
+    }),
+    //
+    post2P2Request: build.mutation({
+      query: (initialPost) => ({
+        url: "api/user/request-p2p/create",
+        method: "POST",
+        body: { ...initialPost },
+      }),
+    }),
+    post2P2ClientRequest: build.mutation({
+      query: (initialPost) => ({
+        url: "api/user/request-p2p/create/client-request",
+        method: "POST",
+        body: { ...initialPost },
+      }),
+    }),
+    patch2P2Response: build.mutation({
+      query: (initialPost) => ({
+        url: "api/user/request-p2p/update",
+        method: "PATCH",
+        body: { ...initialPost },
+      }),
+    }),
+    patchAdminResponse: build.mutation({
+      query: (initialPost) => ({
+        url: `api/admin/response/update/${initialPost.type}`,
+        method: "PATCH",
+        body: {
+          requestID: initialPost.requestID,
+          status: initialPost.status,
+        },
+      }),
+    }),
   }),
 });
 
 export const {
   useGetUserQuery,
   useGetAllUserQuery,
+  usePatchUserInfoMutation,
+  //
+  usePostSignUpMutation,
+  usePostForgotPasswordMutation,
+  //
+  // Admin
+  usePatchUserByAdminMutation,
+  useDeleteUserByAdminMutation,
+  //
   useGetUserWalletQuery,
   useGetUserFundingRequestQuery,
   useGetUserSpotRequestQuery,
@@ -104,4 +208,11 @@ export const {
   useGetPortfolioQuery,
   useGetApprovedSpotRequestQuery,
   useGetApprovedP2PRequestQuery,
+  //User
+  usePostClientRequestMutation,
+  usePatchAdminResponseMutation,
+  usePost2P2RequestMutation,
+  usePost2P2ClientRequestMutation,
+  usePatch2P2ResponseMutation,
+  //
 } = userApiSlice;

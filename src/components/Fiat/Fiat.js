@@ -1,52 +1,16 @@
-import axios from "axios";
-import React, { useState } from "react";
+import React from "react";
 import getCurrencySymbol from "currency-symbols";
 
 import "./Fiat.css";
 import { useGetUserWalletQuery } from "../../features/user/userApiSlice";
 import Loading from "../../pages/Loading/Loading";
-import useAuth from "../../hooks/useAuth";
 import CoinSymbols from "../All Coins/CoinSymbols";
 
 const Fiat = () => {
-  const [selectedNetwork, setSelectedNetwork] = useState();
-  const [selectedCurrency, setSelectedCurrency] = useState();
-  const { email } = useAuth();
   const { data, error, isLoading } = useGetUserWalletQuery();
 
-  const network = [
-    {
-      symbol: "BEP2",
-      name: "BNB Beacon Chain",
-    },
-    {
-      symbol: "BEP20",
-      name: "BNB Smart Chain",
-    },
-    {
-      symbol: "ERC20",
-      name: "Ethereum network",
-    },
-    {
-      symbol: "EOS",
-      name: "Enterprise Operation System network",
-    },
-    {
-      symbol: "BTC",
-      name: "Bitcoin network",
-    },
-    {
-      symbol: "BTC (SegWit)",
-      name: "Native Segwit",
-    },
-  ];
 
   if (!data || error || isLoading) return <Loading />;
-
-  const handleWithdraw = () => {
-    console.log(selectedNetwork);
-  };
-  console.log(selectedCurrency);
 
   function isFiat(value) {
     return value.type === "Fiat Currencies";

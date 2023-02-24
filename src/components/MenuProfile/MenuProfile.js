@@ -33,7 +33,9 @@ const MenuProfile = ({ email }) => {
           id="dropdownMenuProfile"
           data-bs-toggle="dropdown"
           aria-expanded="false"
-          src={profile}
+          src={
+            data.user.image ? data.user.image : process.env.PUBLIC_URL + profile
+          }
           alt=""
         ></img>
         <ul
@@ -42,7 +44,14 @@ const MenuProfile = ({ email }) => {
         >
           <li>
             <Link to="/user-info" state={{ data }} className="sub-menu-link">
-              <img src={info} alt="" />
+              <img
+                src={
+                  data.user.image
+                    ? data.user.image
+                    : process.env.PUBLIC_URL + profile
+                }
+                alt=""
+              />
               <p>{data.user.fullname}</p>
               <span></span>
             </Link>

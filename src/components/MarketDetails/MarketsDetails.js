@@ -10,7 +10,6 @@ import { Link } from "react-router-dom";
 import getCurrencySymbol from "currency-symbols";
 import "./MarkestDetails.css";
 import useAuth from "../../hooks/useAuth";
-import { useGetPortfolioQuery } from "../../features/user/userApiSlice";
 import Loading from "../../pages/Loading/Loading";
 
 const MarketsDetails = ({ markets, symbol, categoryFr }) => {
@@ -18,9 +17,6 @@ const MarketsDetails = ({ markets, symbol, categoryFr }) => {
   const [selected, setSelected] = useState("All Categories");
 
   const { email } = useAuth();
-
-  const { currentData } = useGetPortfolioQuery();
-  console.log(markets);
 
   useEffect(() => {
     axios
@@ -37,7 +33,7 @@ const MarketsDetails = ({ markets, symbol, categoryFr }) => {
     let data = value.category_id;
     if (!data) {
       data = "all";
-      await categoryFr(data);
+      await categoryFr(data); 
       await setSelected("All Categories");
     } else {
       await categoryFr(data);
@@ -46,12 +42,6 @@ const MarketsDetails = ({ markets, symbol, categoryFr }) => {
   };
 
   if (!categories) return null;
-  const token = localStorage.getItem("token");
-  const opts = {
-    headers: {
-      Authorization: token ? `Bearer ${token}` : "",
-    },
-  };
 
   if (!markets) return <Loading />;
 

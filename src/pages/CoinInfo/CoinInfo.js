@@ -22,9 +22,9 @@ import {
   useGetCoinInfoQuery,
   useGetCoinInfoDetailsQuery,
 } from "../../features/coins/coinsApiSlice";
+import { usePostClientRequestMutation } from "../../features/user/userApiSlice";
 
 const CoinInfo = (props) => {
-  // const [coinInfo, setCoinInfo] = useState([]);
   const { coinID } = useParams("");
   const [amount, setAmount] = useState(0);
   const [vsCurrency, setVsCurrency] = useState("usd");
@@ -34,6 +34,8 @@ const CoinInfo = (props) => {
   };
 
   const { email } = useAuth();
+
+  const [postClientRequest] = usePostClientRequestMutation();
 
   const handleAmountChange = (event) => {
     if (!event.target.value === true) {
@@ -52,83 +54,34 @@ const CoinInfo = (props) => {
   });
 
   const handleCreateSpotRequest = async (total) => {
-    const url = `/api/user/request/create/spot`;
-    const token = localStorage.getItem("token");
-
-    const opts = {
-      headers: {
-        Authorization: token ? `Bearer ${token}` : "",
-      },
-    };
-
-    if (amount === 0 || total === 0) {
-      toast.warning("Please enter your amount!!!");
-      return;
+    try {
+      if (!email) {
+        toast.error("Please Login");
+        return;
+      }
+      if (amount === 0 || total === 0) {
+        toast.warning("Please enter your amount!!!");
+        return;
+      }
+      await postClientRequest({
+        reqType: "spot",
+        type: "buy",
+        firstUnit: coinID,
+        secondUnit: vsCurrency,
+        amount: amount,
+        total: total,
+        senderAddress: "DB Crypto",
+        recieverAddress: email,
+      }).unwrap();
+      toast.success("Your request has been sent");
+    } catch (error) {
+      if (error.status === 500) {
+        return null;
+      } else {
+        toast.error(error.data.message);
+      }
     }
-
-    const res = await axios
-      .post(
-        url,
-        {
-          type: "buy",
-          firstUnit: coinID,
-          secondUnit: vsCurrency,
-          amount: amount,
-          total: total,
-          senderAddress: "DB Crypto",
-          recieverAddress: email,
-        },
-        opts
-      )
-      .then((response) => {
-        toast.success(response.data.message);
-      })
-      .catch((error) => {
-        console.log(error);
-        if (!email) {
-          toast.error("Please Login");
-          return;
-        }
-        toast.error(error.response.data.message);
-      });
-    return res.data;
   };
-  // const handleCreateWithdrawRequest = async (total) => {
-  //   const url = `/api/user/request/create/spot`;
-  //   const token = localStorage.getItem("token");
-
-  //   const opts = {
-  //     headers: {
-  //       Authorization: token ? `Bearer ${token}` : "",
-  //     },
-  //   };
-  //   const res = await axios
-  //     .post(
-  //       url,
-  //       {
-  //         type: "sell",
-  //         firstUnit: coinID,
-  //         secondUnit: vsCurrency,
-  //         amount: amount,
-  //         total: total,
-  //         senderAddress: "DB Crypto",
-  //         recieverAddress: email,
-  //       },
-  //       opts
-  //     )
-  //     .then((response) => {
-  //       toast.success(response.data.message);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //       if (!email) {
-  //         toast.error("Please Login");
-  //         return;
-  //       }
-  //       toast.error(error.response.data.message);
-  //     });
-  //   return res.data;
-  // };
 
   if (!currentData || !data) return <Loading />;
 

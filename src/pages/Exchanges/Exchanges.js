@@ -1,5 +1,4 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import NavBar from "../../components/NavBar/NavBar";
 import Loading from "../Loading/Loading";
 import { FloatButton } from "antd";
@@ -7,7 +6,6 @@ import { useGetExchangesDetailsQuery } from "../../features/coins/coinsApiSlice"
 import Footer from "../../components/Footer/Footer";
 import "./Exchanges.css";
 const Exchanges = () => {
-  const [exchangesData, setExchangesData] = useState([]);
   const [perPage, setPerPage] = useState(100);
   const [page, setPage] = useState(1);
 
@@ -15,21 +13,7 @@ const Exchanges = () => {
     perPage: perPage,
     page: page,
   });
-  console.log(data);
-
-  // useEffect(() => {
-  //   axios
-  //     .get("https://api.coingecko.com/api/v3/exchanges?per_page=100&page=1")
-  //     .then((response) => {
-  //       setExchangesData(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, []);
-
   if (!data) return <Loading />;
-  console.log(data);
   return (
     <>
       <NavBar />

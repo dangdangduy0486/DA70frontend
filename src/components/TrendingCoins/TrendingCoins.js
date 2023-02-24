@@ -1,5 +1,3 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleRight } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
@@ -9,24 +7,6 @@ import { useGetTrendingCoinsQuery } from "../../features/coins/coinsApiSlice";
 import "./TrendingCoins.css";
 
 const TrendingCoins = () => {
-  const [trendCoins, setTrendingCoins] = useState(null);
-  // const url = "api/trending";
-  // const token = localStorage.getItem("token");
-  // const opts = {
-  //   headers: {
-  //     Authorization: token ? `Bearer ${token}` : "",
-  //   },
-  // };
-  // useEffect(() => {
-  //   axios
-  //     .get(url, opts)
-  //     .then((res) => {
-  //       setTrendingCoins(res.data);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, []);
   const { data, error, isLoading } = useGetTrendingCoinsQuery();
 
   if (!data || error || isLoading) return <Loading />;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Tabs } from "antd";
 import NavBar from "../../components/NavBar/NavBar";
 import Footer from "../../components/Footer/Footer";
@@ -9,38 +9,12 @@ import "./P2PTrading.css";
 import P2PPost from "./P2PPost";
 
 const P2PTrading = () => {
-  const [p2pRequest, setP2PRequest] = useState([]);
-  const [e, setE] = useState([]);
-
-  var arr = [];
-  const onChange = (key) => {
-    if (key === "1") {
-      p2pRequest.request.map((a) => {
-        if (a.orderType === "buy") {
-          arr.push(a);
-        }
-        setE(arr);
-        console.log(arr);
-      });
-    }
-    if (key === "2") {
-      p2pRequest.request.map((a) => {
-        if (a.orderType === "sell") {
-          let arr = [];
-          arr.push(a);
-          setE(arr);
-        }
-      });
-    }
-  };
-  //
-
   const callback = () => {};
   return (
     <>
       <NavBar currencyFr={callback} />
       <section className="tradingtopeople bg-light p-2">
-        <Tabs defaultActiveKey="1" onChange={onChange}>
+        <Tabs defaultActiveKey="1">
           <Tabs.TabPane tab="Create" key="1" className="tabs_create">
             <P2PPost />
           </Tabs.TabPane>

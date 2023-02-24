@@ -1,5 +1,4 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowTrendDown } from "@fortawesome/free-solid-svg-icons";
 import { faArrowTrendUp } from "@fortawesome/free-solid-svg-icons";
@@ -7,12 +6,9 @@ import { faArrowTrendUp } from "@fortawesome/free-solid-svg-icons";
 import { useGetCategoriesQuery } from "../../features/coins/coinsApiSlice";
 
 const Categories = () => {
-  // const [categories, setCategories] = useState([]);
-
   const { data } = useGetCategoriesQuery();
 
   if (!data) return null;
-  console.log(data);
   return (
     <>
       <div className="container">

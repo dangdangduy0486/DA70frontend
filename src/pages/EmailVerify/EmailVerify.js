@@ -15,7 +15,6 @@ const EmailVerify = () => {
   };
   useEffect(() => {
     axios.get(url, opts).catch((error) => {
-      console.log(error);
       setValidUrl(false);
     });
     setValidUrl(true);

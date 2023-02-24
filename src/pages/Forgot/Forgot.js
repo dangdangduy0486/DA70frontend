@@ -1,36 +1,27 @@
 import React from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./Forgot.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import NavBar from "../../components/NavBar/NavBar";
 import { toast } from "react-toastify";
+import { usePostForgotPasswordMutation } from "../../features/user/userApiSlice";
 
 const Forgot = () => {
   const history = useNavigate();
-  const url = "api/auth/forgot-password";
-  const token = localStorage.getItem("token");
-  const opts = {
-    headers: {
-      Authorization: token ? `Bearer ${token}` : "",
-    },
-  };
+  const [postForgotPassword] = usePostForgotPasswordMutation();
   const onSubmit = async (values) => {
     const { email } = values;
     try {
-      await axios
-        .post(url, { email }, opts)
-        .then(() => {
-          toast.warning("Please check your email!!");
-          history("/login");
-        })
-        .catch((error) => {
-          console.log(error);
-          if (error && error.response) toast.error(error);
-        });
+      await postForgotPassword({ email }).unwrap();
+      toast.warning("Please check your email!!");
+      history("/login");
     } catch (error) {
-      toast.error(error);
+      if (error.status === 500) {
+        return null;
+      } else {
+        toast.error(error.data.message);
+      }
     }
   };
 

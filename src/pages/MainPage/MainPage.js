@@ -1,7 +1,6 @@
 import { Tabs } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-
 import NavBar from "../../components/NavBar/NavBar";
 import Footer from "../../components/Footer/Footer";
 import CarouselCoins from "../../components/CarouselCoins/CarouselCoins ";
@@ -13,12 +12,10 @@ import { useState } from "react";
 const MainPage = () => {
   const [vsCurrency, setVsCurrency] = useState();
   const callback = async (childData) => {
-    console.log(childData);
     await setVsCurrency(childData);
     if (childData === vsCurrency) {
       setVsCurrency();
       setVsCurrency(childData);
-      console.log("hello");
     }
   };
 

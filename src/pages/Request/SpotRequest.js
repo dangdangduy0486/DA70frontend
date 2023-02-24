@@ -1,123 +1,62 @@
 import React from "react";
-import axios from "axios";
-import { useState } from "react";
-import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX, faCheck, faCircle } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
 import getCurrencySymbol from "currency-symbols";
 import moment from "moment/moment";
 import { toast } from "react-toastify";
-
 import useAuth from "../../hooks/useAuth";
-import { useGetUserSpotRequestQuery } from "../../features/user/userApiSlice";
+import {
+  useGetUserSpotRequestQuery,
+  usePatchAdminResponseMutation,
+} from "../../features/user/userApiSlice";
 import CoinSymbols from "../../components/All Coins/CoinSymbols";
 import "./Request.css";
+import Loading from "../Loading/Loading";
 
 const SpotRequest = () => {
-  const navigate = useNavigate();
-  const [spotRequest, setSpotRequest] = useState(null);
-  const [status, setStatus] = useState(null);
-  const [reqID, setReqID] = useState(null);
-
   const { email, role } = useAuth();
 
-  const handleResponseApproved = async (value) => {
-    await setReqID(value._id);
-    await setStatus("approved");
-    const url = `api/admin/response/update/spot`;
-    const token = localStorage.getItem("token");
+  const [patchAdminResponse] = usePatchAdminResponseMutation();
 
-    const opts = {
-      headers: {
-        Authorization: token ? `Bearer ${token}` : "",
-      },
-    };
-    await axios
-      .patch(
-        url,
-        {
-          requestID: reqID,
-          status: status,
-        },
-        opts
-      )
-      .then((response) => {
-        window.location.reload(false);
-        req();
-        navigate("/request");
-        toast.success(response.data.message);
-      })
-      .catch((error) => {
-        toast.error(error.response.data.message);
-      });
+  const handleResponseApproved = async (value) => {
+    try {
+      await patchAdminResponse({
+        type: "spot",
+        requestID: value._id,
+        status: "approved",
+      }).unwrap();
+      window.location.reload(false);
+      toast.success("Approved");
+    } catch (error) {
+      if (error.status === 500) {
+        return null;
+      } else {
+        toast.error(error.data.message);
+      }
+    }
   };
 
   const handleResponseDenided = async (value) => {
-    await setReqID(value._id);
-    await setStatus("rejected");
-    const url = `api/admin/response/update/spot`;
-    const token = localStorage.getItem("token");
-
-    const opts = {
-      headers: {
-        Authorization: token ? `Bearer ${token}` : "",
-      },
-    };
-    await axios
-      .patch(
-        url,
-        {
-          requestID: reqID,
-          status: status,
-        },
-        opts
-      )
-      .then((response) => {
-        window.location.reload(false);
-        req();
-        navigate("/request");
-        toast.success(response.data.message);
-      })
-      .catch((error) => {
-        toast.error(error.response.data.message);
-      });
-  };
-
-  const { data } = useGetUserSpotRequestQuery(email);
-
-  const req = () => {
-    const token = localStorage.getItem("token");
-    const opts = {
-      headers: {
-        Authorization: token ? `Bearer ${token}` : "",
-      },
-    };
-    const url = `api/user/request/review/spot`;
-    axios
-      .get(url, opts)
-      .then((response) => {
-        setSpotRequest(response.data.request);
-      })
-      .catch((error) => {
-        if (!error.response.data.message) {
-          toast.error(error.data.message);
-        } else {
-          toast.error(error.response.data.message);
-        }
-      });
-  };
-
-  useEffect(() => {
     try {
-      req();
+      await patchAdminResponse({
+        type: "spot",
+        requestID: value._id,
+        status: "rejected",
+      }).unwrap();
+      window.location.reload(false);
+      toast.success("Rejected");
     } catch (error) {
-      console.log(error);
+      if (error.status === 500) {
+        return null;
+      } else {
+        toast.error(error.data.message);
+      }
     }
-  }, []);
+  };
 
-  if (!spotRequest || !data) return null;
-  console.log(data);
+  const { data: spotRequest } = useGetUserSpotRequestQuery(email);
+
+  if (!spotRequest) return <Loading />;
   return (
     <>
       <div className="user-request-table-container">
@@ -139,11 +78,11 @@ const SpotRequest = () => {
             </tr>
           </thead>
           <tbody>
-            {data.request.length <= 0 ? (
+            {spotRequest.request.length <= 0 ? (
               <tr style={{ textAlign: "center" }}>Empty</tr>
             ) : (
-              data.request &&
-              data.request.map((r, index) => (
+              spotRequest.request &&
+              spotRequest.request.map((r, index) => (
                 <>
                   <tr>
                     <td>

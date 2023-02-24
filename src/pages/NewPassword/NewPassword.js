@@ -6,7 +6,6 @@ import * as Yup from "yup";
 import { toast } from "react-toastify";
 const NewPassword = () => {
   const history = useNavigate();
-  // const url = `api/user/reset-password/${id}`;
   const url = "";
   const token = localStorage.getItem("token");
   const opts = {

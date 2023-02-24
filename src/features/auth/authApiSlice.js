@@ -12,14 +12,12 @@ export const authApiSlice = apiSlice.injectEndpoints({
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          console.log(data);
           const { accessToken } = data;
           dispatch(setCredentials({ accessToken }));
         } catch (err) {
           console.log(err);
         }
       },
-      // transformResponse: (response, meta, arg) => response.data,
     }),
     sendLogout: build.mutation({
       query: () => ({
@@ -29,34 +27,16 @@ export const authApiSlice = apiSlice.injectEndpoints({
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          console.log(data);
           dispatch(logOut());
         } catch (error) {
           console.log(error);
         }
       },
     }),
-    // refresh: build.mutation({
-    //   query: () => ({
-    //     url: "api/auth/refresh",
-    //     method: "GET",
-    //   }),
-    //   async onQueryStarted(arg, { dispatch, queryFulfilled }) {
-    //     try {
-    //       const { data } = await queryFulfilled;
-    //       console.log(data);
-    //       const { accessToken } = data;
-    //       dispatch(setCredentials({ accessToken }));
-    //     } catch (err) {
-    //       console.log(err);
-    //     }
-    //   },
-    // }),
   }),
 });
 
 export const {
   useLoginMutation,
   useSendLogoutMutation,
-  // useRefreshMutation
 } = authApiSlice;

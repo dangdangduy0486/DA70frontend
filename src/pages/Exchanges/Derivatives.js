@@ -1,5 +1,4 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Derivatives.css";
 import NavBar from "../../components/NavBar/NavBar";
 import Loading from "../Loading/Loading";
@@ -7,7 +6,6 @@ import { useGetDerivativesDetailsQuery } from "../../features/coins/coinsApiSlic
 import Footer from "../../components/Footer/Footer";
 
 const Derivatives = () => {
-  // const [derivativesData, setDerivativesData] = useState([]);
   const [perPage, setPerPage] = useState(100);
   const [page, setPage] = useState(1);
 

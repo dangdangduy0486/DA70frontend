@@ -3,10 +3,15 @@ import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import "./SignUp.css";
-import NavBar from "../../components/NavBar/NavBar";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { usePostSignUpMutation } from "../../features/user/userApiSlice";
+
 const Signup = () => {
   const history = useNavigate();
+
+  const [postSignUp] = usePostSignUpMutation();
+
   const url = "api/auth/signup";
   const token = localStorage.getItem("token");
   const opts = {
@@ -17,16 +22,24 @@ const Signup = () => {
   const onSubmit = async (values) => {
     const { fullname, email, password } = values;
     try {
-      await axios
-        .post(url, { fullname, email, password }, opts)
-        .then(() => {
-          history("/login");
-        })
-        .catch((err) => {
-          if (err && err.response) console.log("Error", err);
-        });
+      await postSignUp({ fullname, email, password }).unwrap();
+      toast.success("Sign up success");
+      history("/login");
+      // await axios
+      //   .post(url, { fullname, email, password }, opts)
+      //   .then((response) => {
+      //     toast.success(response.data.message);
+      //     history("/login");
+      //   })
+      //   .catch((err) => {
+      //     if (err && err.response) console.log("Error", err);
+      //   });
     } catch (error) {
-      console.log("Error...");
+      if (error.status === 500) {
+        return null;
+      } else {
+        toast.error(error.data.message);
+      }
     }
   };
   const formik = useFormik({

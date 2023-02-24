@@ -14,14 +14,12 @@ export const coinsApiSlice = apiSlice.injectEndpoints({
       query: () => {
         const check = localStorage.getItem("trendingCoins");
         if (!check) {
-          console.log("!check");
           return {
             url: "/api/coins/trending-coins/review",
             method: "GET",
           };
         }
         if (check) {
-          console.log("check");
           return {
             url: "",
           };
@@ -39,10 +37,8 @@ export const coinsApiSlice = apiSlice.injectEndpoints({
     getMarkets: build.query({
       query: (arg) => {
         const { vs_currency, category, order, perPage, page } = arg;
-        console.log(arg);
         const check = localStorage.getItem("markets");
         if (!check) {
-          console.log("!check");
           return {
             url: "/api/coins/markets/review",
             method: "GET",
@@ -56,7 +52,6 @@ export const coinsApiSlice = apiSlice.injectEndpoints({
           };
         }
         if (check) {
-          console.log("check");
           return {
             url: "",
           };
@@ -66,7 +61,6 @@ export const coinsApiSlice = apiSlice.injectEndpoints({
     getAllcoinsImage: build.query({
       query: (arg) => {
         const { page } = arg;
-        console.log(page);
         return {
           url: "/api/coins/all-coins-image/review",
           method: "GET",
@@ -100,7 +94,6 @@ export const coinsApiSlice = apiSlice.injectEndpoints({
     getCoinInfo: build.query({
       query: (arg) => {
         const { vs_currency, ids } = arg;
-        console.log(vs_currency, ids);
         return {
           url: `/api/coins`,
           method: "GET",
@@ -126,7 +119,6 @@ export const coinsApiSlice = apiSlice.injectEndpoints({
     getDerivativesDetails: build.query({
       query: (arg) => {
         const { perPage, page } = arg;
-        console.log(perPage, page);
         return {
           url: `/api/coins/derivatives/review`,
           method: "GET",
@@ -140,7 +132,6 @@ export const coinsApiSlice = apiSlice.injectEndpoints({
     getExchangesDetails: build.query({
       query: (arg) => {
         const { perPage, page } = arg;
-        console.log(perPage, page);
         return {
           url: `/api/coins/exchanges/review`,
           method: "GET",

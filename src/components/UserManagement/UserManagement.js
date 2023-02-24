@@ -1,13 +1,16 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import NavBar from "../NavBar/NavBar";
-import axios from "axios";
 import Loading from "../../pages/Loading/Loading";
 import useAuth from "../../hooks/useAuth";
-import { useGetAllUserQuery } from "../../features/user/userApiSlice";
+import {
+  useGetAllUserQuery,
+  usePatchUserByAdminMutation,
+  useDeleteUserByAdminMutation,
+} from "../../features/user/userApiSlice";
 import { toast } from "react-toastify";
 import moment from "moment/moment";
 import Footer from "../Footer/Footer";
@@ -19,81 +22,65 @@ const UserManagement = () => {
   const [userFullname, setUserFullname] = useState();
 
   const { email, role } = useAuth();
-
-  const token = localStorage.getItem("token");
-
   const { data } = useGetAllUserQuery(email);
 
-  const opts = {
-    headers: {
-      Authorization: token ? `Bearer ${token}` : "",
-    },
-  };
+  const [patchUserByAdmin] = usePatchUserByAdminMutation();
+  const [deleteUserByAdmin] = useDeleteUserByAdminMutation();
 
   const handleEditUserName = (e) => {
     setUserFullname(e.target.value);
   };
 
-  const handleEditUser = (e) => {
+  const handleEditUser = async (e) => {
     e.preventDefault();
 
-    axios
-      .patch(
-        `/api/admin/user-management/update`,
-        {
-          email: selectedUser.email,
-          fullname: userFullname,
-        },
-        opts
-      )
-      .then((response) => {
-        toast.success(response.data.message);
-        setTimeout(() => {
-          window.location.reload(false);
-        }, 2000);
-      })
-      .catch((error) => {
-        toast.error(error.response.data.message);
-      });
+    try {
+      await patchUserByAdmin({
+        email: selectedUser.email,
+        fullname: userFullname,
+      }).unwrap();
+      toast.success("Edit user success!!");
+      setTimeout(() => {
+        window.location.reload(false);
+      }, 2000);
+    } catch (error) {
+      console.log(error);
+      if (error.status === 500) {
+        return null;
+      } else {
+        toast.error(error.data.message);
+      }
+    }
   };
 
-  const handleDeleteUser = (e) => {
-    const token = localStorage.getItem("token");
-    const opts = {
-      headers: {
-        Authorization: token ? `Bearer ${token}` : "",
-      },
-    };
-    console.log(opts);
+  const handleDeleteUser = async (e) => {
     e.preventDefault();
-    axios
-      .delete(
-        `/api/admin/user-management/delete`,
-        {
-          email: selectedUser.email,
-        },
-        opts
-      )
-      .then((response) => {
-        toast.success(response.data.message);
-        setTimeout(() => {
-          window.location.reload(false);
-        }, 2000);
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error(error.response.data.message);
-      });
+
+    try {
+      await deleteUserByAdmin({
+        email: selectedUser.email,
+      }).unwrap();
+      toast.success("Delete user success!!");
+      setTimeout(() => {
+        window.location.reload(false);
+      }, 2000);
+    } catch (error) {
+      console.log(error);
+      if (error.status === 500) {
+        return null;
+      } else {
+        toast.error(error.data.message);
+      }
+    }
   };
 
   if (!email || role !== "admin") {
     return <ErrorPage />;
   }
   if (!data) return <Loading />;
-  console.log(data);
   return (
     <>
-    <NavBar />
+      <NavBar />
       <div className="shadow-lg p-3 bg-body ">
         <div>
           <div className="col-8 text-center">

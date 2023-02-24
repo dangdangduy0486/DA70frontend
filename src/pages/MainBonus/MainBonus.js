@@ -2,44 +2,14 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleRight } from "@fortawesome/free-solid-svg-icons";
-
 import "./MainBonus.css";
 import { Carousel } from "antd";
 import Loading from "../Loading/Loading";
 import Footer from "../../components/Footer/Footer";
 import { useGetTrendingCoinsQuery } from "../../features/coins/coinsApiSlice";
-import axios from "axios";
 
 const Mainbonus = () => {
   const [trendingCoins, setTrendingCoins] = useState([]);
-
-  // useEffect(() => {
-  //   const url = "api/trending";
-  //   const token = localStorage.getItem("token");
-  //   const opts = {
-  //     headers: {
-  //       Authorization: token ? `Bearer ${token}` : "",
-  //     },
-  //   };
-  //   const check = localStorage.getItem("trendingCoins");
-  //   if (!check) {
-  //     axios
-  //       .get(url, opts)
-  //       .then((res) => {
-  //         console.log("hello");
-  //         setTrendingCoins(res.data.coins);
-  //         localStorage.setItem("trendingCoins", JSON.stringify(res.data.coins));
-  //       })
-  //       .catch((error) => {
-  //         console.log(error);
-  //       });
-  //   }
-  //   if (check) {
-  //     setTrendingCoins(JSON.parse(check));
-  //   }
-  // }, []);
-  // console.log(trendingCoins);
-  // console.log(typeof trendingCoins);
 
   const { data } = useGetTrendingCoinsQuery();
   useEffect(() => {

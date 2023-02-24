@@ -8,7 +8,6 @@ const CurrencyDetails = (props) => {
   const handleSelectCurrency = async (value) => {
     await setSelected(value.symbol);
     await props.currencyFr(value.symbol);
-    console.log(value.symbol);
   };
   const { data } = useGetCurrenciesQuery();
   if (!data) return null;
@@ -51,8 +50,6 @@ const CurrencyDetails = (props) => {
       newItems[lastItem].items.push(item);
     });
   }
-  console.log(selected);
-
   return (
     <>
       <div className="dropstart">

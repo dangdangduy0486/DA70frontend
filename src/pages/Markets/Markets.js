@@ -25,7 +25,6 @@ const Markets = (props) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const categoryCallback = async (childData) => {
-    console.log(childData);
     setIsLoading(true);
     await setCategory(childData);
     setIsLoading(true);
@@ -52,7 +51,6 @@ const Markets = (props) => {
   });
 
   useEffect(() => {
-    console.log(perPage);
     const check = localStorage.getItem("markets");
     if (isLoading) {
       localStorage.removeItem("markets");

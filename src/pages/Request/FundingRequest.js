@@ -1,116 +1,60 @@
-import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX, faCheck, faCircle } from "@fortawesome/free-solid-svg-icons";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import getCurrencySymbol from "currency-symbols";
-import { useNavigate } from "react-router-dom";
 import moment from "moment/moment";
 import { toast } from "react-toastify";
-
 import useAuth from "../../hooks/useAuth";
-import { useGetUserFundingRequestQuery } from "../../features/user/userApiSlice";
+import {
+  useGetUserFundingRequestQuery,
+  usePatchAdminResponseMutation,
+} from "../../features/user/userApiSlice";
 import "./Request.css";
+import Loading from "../Loading/Loading";
 
 const FundingRequest = () => {
-  const navigate = useNavigate();
-  const [fundingRequest, setFundingRequest] = useState([]);
-  const [status, setStatus] = useState(null);
-  const [reqID, setReqID] = useState(null);
-  // const [reqType, setReqType] = useState("spot");
-  const { email, role } = useAuth();
+  const { role } = useAuth();
+
+  const [patchAdminResponse] = usePatchAdminResponseMutation();
 
   const handleResponseApproved = async (value) => {
-    setReqID(value._id);
-    setStatus("approved");
-    const url = `api/admin/response/update/funding`;
-    const token = localStorage.getItem("token");
-
-    const opts = {
-      headers: {
-        Authorization: token ? `Bearer ${token}` : "",
-      },
-    };
-    await axios
-      .patch(
-        url,
-        {
-          requestID: reqID,
-          status: status,
-        },
-        opts
-      )
-      .then((response) => {
-        window.location.reload(false);
-        req();
-        navigate("/request");
-        toast.success(response.data.message);
-      })
-      .catch((error) => {
-        toast.error(error.response.data.message);
-      });
+    try {
+      await patchAdminResponse({
+        type: "funding",
+        requestID: value._id,
+        status: "approved",
+      }).unwrap();
+      window.location.reload(false);
+      toast.success("Approved");
+    } catch (error) {
+      if (error.status === 500) {
+        return null;
+      } else {
+        toast.error(error.data.message);
+      }
+    }
   };
 
   const handleResponseDenided = async (value) => {
-    setReqID(value._id);
-    setStatus("rejected");
-    const url = `api/admin/response/update/funding`;
-    const token = localStorage.getItem("token");
-
-    const opts = {
-      headers: {
-        Authorization: token ? `Bearer ${token}` : "",
-      },
-    };
-    await axios
-      .patch(
-        url,
-        {
-          requestID: reqID,
-          status: status,
-        },
-        opts
-      )
-      .then((response) => {
-        window.location.reload(false);
-        req();
-        navigate("/request");
-        toast.success(response.data.message);
-      })
-      .catch((error) => {
-        toast.error(error.response.data.message);
-      });
-  };
-
-  const { data } = useGetUserFundingRequestQuery();
-
-  const req = () => {
-    const url = `api/user/request/review/funding`;
-    const token = localStorage.getItem("token");
-
-    const opts = {
-      headers: {
-        Authorization: token ? `Bearer ${token}` : "",
-      },
-    };
-    axios
-      .get(url, opts)
-      .then((response) => {
-        setFundingRequest(response.data.request);
-        toast.success(response.data.message);
-      })
-      .catch((error) => {
-        toast.error(error.response.data.message);
-      });
-  };
-
-  useEffect(() => {
     try {
-      req();
+      await patchAdminResponse({
+        type: "funding",
+        requestID: value._id,
+        status: "rejected",
+      }).unwrap();
+      window.location.reload(false);
+      toast.success("Rejected");
     } catch (error) {
-      toast.error(error.response.data.message);
+      if (error.status === 500) {
+        return null;
+      } else {
+        toast.error(error.data.message);
+      }
     }
-  }, []);
-  console.log(fundingRequest);
+  };
+
+  const { data: fundingRequest } = useGetUserFundingRequestQuery();
+  if (!fundingRequest) return <Loading />;
 
   return (
     <>
@@ -134,7 +78,7 @@ const FundingRequest = () => {
               </tr>
             ) : (
               fundingRequest &&
-              fundingRequest.map((rs, index) => (
+              fundingRequest.request.map((rs, index) => (
                 <tr key={rs._id}>
                   <th>{index + 1}</th>
                   <td>{rs.recieverAddress ? rs.recieverAddress : "?"}</td>

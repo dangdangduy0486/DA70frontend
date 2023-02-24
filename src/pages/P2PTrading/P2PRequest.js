@@ -1,115 +1,56 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX, faCheck, faCircle } from "@fortawesome/free-solid-svg-icons";
 import moment from "moment/moment";
 import { toast } from "react-toastify";
 import getCurrencySymbol from "currency-symbols";
-// import { useNavigate } from "react-router-dom";
-
-// import useAuth from "../../hooks/useAuth";
-import { useGetUserOwnRequestQuery } from "../../features/user/userApiSlice";
+import {
+  useGetUserOwnRequestQuery,
+  usePatch2P2ResponseMutation,
+} from "../../features/user/userApiSlice";
 import CoinSymbols from "../../components/All Coins/CoinSymbols.js";
 import "./P2PTrading.css";
+import Loading from "../Loading/Loading";
 
 const P2PRequest = () => {
-  const [p2pData, setP2PData] = useState([]);
-  const [status, setStatus] = useState(null);
-  const [reqID, setReqID] = useState(null);
-  // const { email } = useAuth();
-
+  const [patch2P2Response] = usePatch2P2ResponseMutation();
   const handleResponseApproved = async (value) => {
-    await setReqID(value._id);
-    await setStatus("approved");
-    const url = `api/user/request-p2p/update`;
-    const token = localStorage.getItem("token");
-
-    const opts = {
-      headers: {
-        Authorization: token ? `Bearer ${token}` : "",
-      },
-    };
-    await axios
-      .patch(
-        url,
-        {
-          requestID: reqID,
-          status: status,
-        },
-        opts
-      )
-      .then((response) => {
-        // window.location.reload(false);
-        req();
-        toast.success(response.data.message);
-      })
-      .catch((error) => {
-        console.log(error);
-        if (error.response.status === 500) {
-          return null;
-        } else {
-          toast.error(error.response.data.message);
-        }
-      });
+    try {
+      await patch2P2Response({
+        requestID: value._id,
+        status: "approved",
+      }).unwrap();
+      window.location.reload(false);
+      toast.success("Approved");
+    } catch (error) {
+      if (error.status === 500) {
+        return null;
+      } else {
+        toast.error(error.data.message);
+      }
+    }
   };
 
   const handleResponseDenided = async (value) => {
-    await setReqID(value._id);
-    await setStatus("rejected");
-    const url = `api/user/request-p2p/update`;
-    const token = localStorage.getItem("token");
-
-    const opts = {
-      headers: {
-        Authorization: token ? `Bearer ${token}` : "",
-      },
-    };
-    await axios
-      .patch(
-        url,
-        {
-          requestID: reqID,
-          status: status,
-        },
-        opts
-      )
-      .then((response) => {
-        // window.location.reload(false);
-        req();
-        toast.success(response.data.message);
-      })
-      .catch((error) => {
-        toast.error(error.response.data.message);
-      });
+    try {
+      await patch2P2Response({
+        requestID: value._id,
+        status: "rejected",
+      }).unwrap();
+      window.location.reload(false);
+      toast.success("Rejected");
+    } catch (error) {
+      if (error.status === 500) {
+        return null;
+      } else {
+        toast.error(error.data.message);
+      }
+    }
   };
 
-  const { data } = useGetUserOwnRequestQuery();
+  const { data: p2pData } = useGetUserOwnRequestQuery();
 
-  const req = () => {
-    const url = `api/user/request-p2p/review/own`;
-    const token = localStorage.getItem("token");
-
-    const opts = {
-      headers: {
-        Authorization: token ? `Bearer ${token}` : "",
-      },
-    };
-    axios
-      .get(url, opts)
-      .then((response) => {
-        setP2PData(response.data.request);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  useEffect(() => {
-    req();
-  }, []);
-
-  if (!p2pData) return null;
-  console.log(p2pData);
+  if (!p2pData) return <Loading />;
   return (
     <>
       <div className="P2P-table-container">
@@ -127,7 +68,7 @@ const P2PRequest = () => {
             </tr>
           </thead>
           <tbody>
-            {p2pData.length <= 0 ? (
+            {p2pData.request.length <= 0 ? (
               <>
                 <tr>
                   <td colSpan="8">
@@ -136,8 +77,8 @@ const P2PRequest = () => {
                 </tr>
               </>
             ) : (
-              p2pData &&
-              p2pData.map((value, index) => (
+              p2pData.request &&
+              p2pData.request.map((value, index) => (
                 <tr key={value._id}>
                   <th>{index + 1}</th>
                   <td>
@@ -207,7 +148,6 @@ const P2PRequest = () => {
                         <span
                           className="text-success me-3"
                           id="approved-check"
-                          style={{ cursor: "pointer" }}
                           onClick={() => handleResponseApproved(value)}
                           key={value._id}
                         >
@@ -218,7 +158,6 @@ const P2PRequest = () => {
                           id="denided-check"
                           onClick={() => handleResponseDenided(value)}
                           key={value._id}
-                          style={{ cursor: "pointer" }}
                         >
                           <FontAwesomeIcon icon={faX} />
                         </span>

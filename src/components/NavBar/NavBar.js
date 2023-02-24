@@ -2,7 +2,6 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/esm/Button";
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBitcoinSign } from "@fortawesome/free-solid-svg-icons";
@@ -17,27 +16,17 @@ import SearchBar from "../SearchBar/SearchBar";
 
 const NavBar = (props) => {
   const [vsCurrency, setVsCurrency] = useState("usd");
-  // useEffect(() => {
-  //   currencyCallback();
-  // }, [vsCurrency]);
 
   const currencyCallback = async (childData) => {
     if (childData) {
       await setVsCurrency(childData);
       await props.currencyFr(childData);
-      console.log(childData);
     } else {
-      // setVsCurrency("usd")
       await props.currencyFr(vsCurrency);
     }
   };
 
   const { email } = useAuth();
-  console.log(email);
-
-  /*********************/
-
-  /*********************/
 
   return (
     <>
@@ -115,16 +104,6 @@ const NavBar = (props) => {
           {email ? (
             <>
               <Nav className="me-0 menu-right">
-                {/* <Link style={{ textDecoration: "none" }} to="/">
-                  <Button
-                    className="btn"
-                    variant="outline-warning"
-                    onClick={sendLogout}
-                  >
-                    Logout
-                  </Button>
-                </Link> */}
-                {/* <span className="money">money</span> */}
                 <MenuProfile className="menu-profile" email={email} />
                 <Link
                   style={{ textDecoration: "none", alignSelf: "center" }}
