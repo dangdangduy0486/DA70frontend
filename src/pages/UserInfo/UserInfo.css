@@ -35,7 +35,7 @@
 }
 
 .QRCode_container div * {
-  margin-left: 20px;
+  /* margin-left: 20px; */
   height: 350px
 }
 

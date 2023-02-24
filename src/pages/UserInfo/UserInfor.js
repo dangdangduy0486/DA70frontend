@@ -75,10 +75,47 @@ const UserInfor = () => {
               />
             </div>
             <div className="card-body">
-              <p>
-                <span className="me-1">You have been a member since</span>
-                {moment(data.user.createdAt).fromNow()}
-              </p>
+              <div className="d-flex justify-content-between">
+                <p>
+                  <span className="me-1 ">You have been a member since</span>
+                  {moment(data.user.createdAt).fromNow()}
+                </p>
+                <button
+                  type="button"
+                  className="btn btn-outline-info"
+                  data-bs-toggle="modal"
+                  data-bs-target="#qrcodeModal"
+                >
+                  Generate QR code
+                </button>
+                {/* <!-- Modal --> */}
+                <div
+                  class="modal fade"
+                  id="qrcodeModal"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-body">
+                        <div className="QRCode_container d-flex justify-content-center">
+                          <div dangerouslySetInnerHTML={{ __html: data.QR }} />
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-outline-success"
+                          data-bs-dismiss="modal"
+                        >
+                          Close
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <form onSubmit={handleEditInfo}>
                 <div className="user-form">
                   <div class="form-floating">
@@ -134,9 +171,6 @@ const UserInfor = () => {
                 </button>
               </form>
             </div>
-          </div>
-          <div className="QRCode_container">
-            <div dangerouslySetInnerHTML={{ __html: data.QR }} />
           </div>
         </div>
       </section>
