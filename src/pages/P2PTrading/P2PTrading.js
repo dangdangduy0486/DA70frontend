@@ -9,10 +9,9 @@ import "./P2PTrading.css";
 import P2PPost from "./P2PPost";
 
 const P2PTrading = () => {
-  const callback = () => {};
   return (
     <>
-      <NavBar currencyFr={callback} />
+      <NavBar />
       <section className="tradingtopeople bg-light p-2">
         <Tabs defaultActiveKey="1">
           <Tabs.TabPane tab="Create" key="1" className="tabs_create">

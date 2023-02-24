@@ -10,7 +10,6 @@ import { useGetTrendingCoinsQuery } from "../../features/coins/coinsApiSlice";
 
 const Mainbonus = () => {
   const [trendingCoins, setTrendingCoins] = useState([]);
-
   const { data } = useGetTrendingCoinsQuery();
   useEffect(() => {
     const check = localStorage.getItem("trendingCoins");

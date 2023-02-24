@@ -23,10 +23,6 @@ const AllCoins = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(12610);
   const [perPage, setPerPage] = useState(100);
-  const [filteredData, setFilteredData] = useState([]);
-  const [wordEntered, setWordEntered] = useState("");
-
-  const callback = () => {};
 
   //total per page
   const inputRef = useRef(null);
@@ -107,7 +103,7 @@ const AllCoins = () => {
 
   return (
     <>
-      <NavBar currencyFr={callback} />
+      <NavBar />
       <section className="allcoin_container">
         <table className="table table-dark table-hover">
           <thead>

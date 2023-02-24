@@ -11,11 +11,17 @@ import getCurrencySymbol from "currency-symbols";
 import "./MarkestDetails.css";
 import useAuth from "../../hooks/useAuth";
 import Loading from "../../pages/Loading/Loading";
+import {
+  changeCategory,
+  selectCategory,
+} from "../../features/actions/actionsSlice";
+import { useSelector, useDispatch } from "react-redux";
 
-const MarketsDetails = ({ markets, symbol, categoryFr }) => {
+const MarketsDetails = ({ markets, symbol }) => {
   const [categories, setCategories] = useState([]);
   const [selected, setSelected] = useState("All Categories");
-
+  const dispatch = useDispatch();
+  const category = useSelector(selectCategory);
   const { email } = useAuth();
 
   useEffect(() => {
@@ -33,10 +39,10 @@ const MarketsDetails = ({ markets, symbol, categoryFr }) => {
     let data = value.category_id;
     if (!data) {
       data = "all";
-      await categoryFr(data); 
+      await dispatch(changeCategory(data));
       await setSelected("All Categories");
     } else {
-      await categoryFr(data);
+      await dispatch(changeCategory(data));
       await setSelected(value.name);
     }
   };

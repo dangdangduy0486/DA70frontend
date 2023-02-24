@@ -23,15 +23,13 @@ import {
   useGetCoinInfoDetailsQuery,
 } from "../../features/coins/coinsApiSlice";
 import { usePostClientRequestMutation } from "../../features/user/userApiSlice";
-
-const CoinInfo = (props) => {
+import { selectCurrency } from "../../features/actions/actionsSlice";
+import { useSelector } from "react-redux";
+const CoinInfo = () => {
   const { coinID } = useParams("");
   const [amount, setAmount] = useState(0);
-  const [vsCurrency, setVsCurrency] = useState("usd");
+  const currency = useSelector(selectCurrency);
 
-  const callback = async (childData) => {
-    await setVsCurrency(childData);
-  };
 
   const { email } = useAuth();
 
@@ -45,7 +43,7 @@ const CoinInfo = (props) => {
   };
 
   const { currentData } = useGetCoinInfoQuery({
-    vs_currency: vsCurrency,
+    vs_currency: currency,
     ids: coinID,
   });
 
@@ -67,7 +65,7 @@ const CoinInfo = (props) => {
         reqType: "spot",
         type: "buy",
         firstUnit: coinID,
-        secondUnit: vsCurrency,
+        secondUnit: currency,
         amount: amount,
         total: total,
         senderAddress: "DB Crypto",
@@ -87,7 +85,7 @@ const CoinInfo = (props) => {
 
   return (
     <>
-      <NavBar currencyFr={callback} vsCurrency={vsCurrency} />
+      <NavBar />
       <section className="coininfor">
         <section className="coin_info">
           <div className="row coin_info_main">
@@ -103,15 +101,15 @@ const CoinInfo = (props) => {
                         <img src={currentData[0].image} alt=""></img>
                       </span>
                       <span>{currentData[0].name}</span>
-                      <span>({vsCurrency.toUpperCase()})</span>
+                      <span>({currency.toUpperCase()})</span>
                     </div>
                     <div>
                       <div>
                         <div>
                           <span className="text-muted">{`${
-                            getCurrencySymbol(vsCurrency)
-                              ? getCurrencySymbol(vsCurrency)
-                              : vsCurrency.toUpperCase()
+                            getCurrencySymbol(currency)
+                              ? getCurrencySymbol(currency)
+                              : currency.toUpperCase()
                           } `}</span>
                           <span className="coin-info-price">
                             {currentData[0].current_price
@@ -177,18 +175,18 @@ const CoinInfo = (props) => {
                           <div className="progress_info">
                             <p>
                               <span className="text-muted">{`${
-                                getCurrencySymbol(vsCurrency)
-                                  ? getCurrencySymbol(vsCurrency)
-                                  : vsCurrency.toUpperCase()
+                                getCurrencySymbol(currency)
+                                  ? getCurrencySymbol(currency)
+                                  : currency.toUpperCase()
                               } `}</span>
                               {currentData[0].low_24h}
                             </p>
                             <p>24H</p>
                             <p>
                               <span className="text-muted">{`${
-                                getCurrencySymbol(vsCurrency)
-                                  ? getCurrencySymbol(vsCurrency)
-                                  : vsCurrency.toUpperCase()
+                                getCurrencySymbol(currency)
+                                  ? getCurrencySymbol(currency)
+                                  : currency.toUpperCase()
                               } `}</span>
                               {currentData[0].high_24h}
                             </p>
@@ -206,9 +204,9 @@ const CoinInfo = (props) => {
                     <span className="text-muted">Market Cap</span>
                     <span>
                       {`${
-                        getCurrencySymbol(vsCurrency)
-                          ? getCurrencySymbol(vsCurrency)
-                          : vsCurrency.toUpperCase()
+                        getCurrencySymbol(currency)
+                          ? getCurrencySymbol(currency)
+                          : currency.toUpperCase()
                       } `}
                       {currentData[0].market_cap}
                     </span>
@@ -217,9 +215,9 @@ const CoinInfo = (props) => {
                     <span className="text-muted">24 Hour Trading Vol</span>
                     <span>
                       {`${
-                        getCurrencySymbol(vsCurrency)
-                          ? getCurrencySymbol(vsCurrency)
-                          : vsCurrency.toUpperCase()
+                        getCurrencySymbol(currency)
+                          ? getCurrencySymbol(currency)
+                          : currency.toUpperCase()
                       } `}
                       {currentData[0].total_volume
                         ? currentData[0].total_volume.toLocaleString()
@@ -230,9 +228,9 @@ const CoinInfo = (props) => {
                     <span className="text-muted">Fully Diluted Valuation</span>
                     <span>
                       {`${
-                        getCurrencySymbol(vsCurrency)
-                          ? getCurrencySymbol(vsCurrency)
-                          : vsCurrency.toUpperCase()
+                        getCurrencySymbol(currency)
+                          ? getCurrencySymbol(currency)
+                          : currency.toUpperCase()
                       } `}
                       {currentData[0].fully_diluted_valuation
                         ? currentData[0].fully_diluted_valuation.toLocaleString()
@@ -460,9 +458,9 @@ const CoinInfo = (props) => {
                   <span className="text-muted fs-3">Your total: </span>
                   <span className="fs-5">
                     {`${
-                      getCurrencySymbol(vsCurrency)
-                        ? getCurrencySymbol(vsCurrency)
-                        : vsCurrency.toUpperCase()
+                      getCurrencySymbol(currency)
+                        ? getCurrencySymbol(currency)
+                        : currency.toUpperCase()
                     } `}
                   </span>
                   <span className="fs-5" id="spotTotal" name="spotTotal">
@@ -488,7 +486,7 @@ const CoinInfo = (props) => {
             </div>
             <div className="overview-statistics">
               <h3 className="text-warning" style={{ textAlign: "center" }}>
-                {vsCurrency.toUpperCase() ? vsCurrency.toUpperCase() : "?"}{" "}
+                {currency.toUpperCase() ? currency.toUpperCase() : "?"}{" "}
                 Price Statistics
               </h3>
               <div className="overview-statistics-list">
@@ -499,9 +497,9 @@ const CoinInfo = (props) => {
                     </span>
                     <span>
                       {`${
-                        getCurrencySymbol(vsCurrency)
-                          ? getCurrencySymbol(vsCurrency)
-                          : vsCurrency.toUpperCase()
+                        getCurrencySymbol(currency)
+                          ? getCurrencySymbol(currency)
+                          : currency.toUpperCase()
                       } `}
                       {currentData[0].current_price
                         ? currentData[0].current_price.toLocaleString()
@@ -512,15 +510,15 @@ const CoinInfo = (props) => {
                     <span className="text-muted">24h Low / 24h High</span>
                     <span>
                       {`${
-                        getCurrencySymbol(vsCurrency)
-                          ? getCurrencySymbol(vsCurrency)
-                          : vsCurrency.toUpperCase()
+                        getCurrencySymbol(currency)
+                          ? getCurrencySymbol(currency)
+                          : currency.toUpperCase()
                       } `}
                       {currentData[0].low_24h ? currentData[0].low_24h : "?"} /
                       {`${
-                        getCurrencySymbol(vsCurrency)
-                          ? getCurrencySymbol(vsCurrency)
-                          : vsCurrency.toUpperCase()
+                        getCurrencySymbol(currency)
+                          ? getCurrencySymbol(currency)
+                          : currency.toUpperCase()
                       } `}
                       {currentData[0].high_24h ? currentData[0].high_24h : "?"}
                     </span>

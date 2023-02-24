@@ -1,13 +1,19 @@
-import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import "./CurrencyDetails.css";
 import { useGetCurrenciesQuery } from "../../features/coins/coinsApiSlice";
+import {
+  changeCurrency,
+  selectCurrency,
+} from "../../features/actions/actionsSlice";
 
-const CurrencyDetails = (props) => {
-  const [selected, setSelected] = useState("usd");
+const CurrencyDetails = () => {
+  const currency = useSelector(selectCurrency);
+  console.log(currency);
+  const dispatch = useDispatch();
 
   const handleSelectCurrency = async (value) => {
-    await setSelected(value.symbol);
-    await props.currencyFr(value.symbol);
+    await dispatch(changeCurrency(value.symbol));
+;
   };
   const { data } = useGetCurrenciesQuery();
   if (!data) return null;
@@ -59,7 +65,7 @@ const CurrencyDetails = (props) => {
           aria-expanded="false"
           style={{ height: "30px", width: "150px" }}
         >
-          {selected.toUpperCase()}
+          {currency.toUpperCase()}
         </button>
         <ul className="dropdown-menu dropdown-menu-currencies">
           {newItems &&

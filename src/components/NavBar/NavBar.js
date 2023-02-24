@@ -14,18 +14,7 @@ import useAuth from "../../hooks/useAuth";
 import CurrencyDetails from "../CurrencyDetails/CurrencyDetails";
 import SearchBar from "../SearchBar/SearchBar";
 
-const NavBar = (props) => {
-  const [vsCurrency, setVsCurrency] = useState("usd");
-
-  const currencyCallback = async (childData) => {
-    if (childData) {
-      await setVsCurrency(childData);
-      await props.currencyFr(childData);
-    } else {
-      await props.currencyFr(vsCurrency);
-    }
-  };
-
+const NavBar = () => {
   const { email } = useAuth();
 
   return (
@@ -96,10 +85,7 @@ const NavBar = (props) => {
           </Navbar.Collapse>
           <Nav className="bao111">
             <SearchBar />
-            <CurrencyDetails
-              currencyFr={currencyCallback}
-              vsCurrency={vsCurrency}
-            />
+            <CurrencyDetails/>
           </Nav>
           {email ? (
             <>

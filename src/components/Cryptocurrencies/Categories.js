@@ -4,11 +4,13 @@ import { faArrowTrendDown } from "@fortawesome/free-solid-svg-icons";
 import { faArrowTrendUp } from "@fortawesome/free-solid-svg-icons";
 
 import { useGetCategoriesQuery } from "../../features/coins/coinsApiSlice";
+import Loading from "../../pages/Loading/Loading";
 
 const Categories = () => {
   const { data } = useGetCategoriesQuery();
 
-  if (!data) return null;
+  if (!data) return <Loading />;
+  console.log(data);
   return (
     <>
       <div className="container">
@@ -74,13 +76,19 @@ const Categories = () => {
                     <td>
                       <span>
                         <span className="text-muted me-1">$</span>
-                        <span>{cate.market_cap.toLocaleString()}</span>
+                        <span>
+                          {cate.market_cap
+                            ? cate.market_cap.toLocaleString()
+                            : "?"}
+                        </span>
                       </span>
                     </td>
                     <td>
                       <span>
                         <span className="text-muted me-1">$</span>
-                        {cate.volume_24h.toLocaleString()}
+                        {cate.volume_24h
+                          ? cate.volume_24h.toLocaleString()
+                          : "?"}
                       </span>
                     </td>
                   </tr>

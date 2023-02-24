@@ -2,6 +2,9 @@ import { apiSlice } from "../../app/api/apiSlice";
 
 export const userApiSlice = apiSlice.injectEndpoints({
   endpoints: (build) => ({
+    getCurrency: build.mutation({
+
+    }),
     getUser: build.query({
       query: () => {
         return {

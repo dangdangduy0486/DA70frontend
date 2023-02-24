@@ -7,21 +7,11 @@ import CarouselCoins from "../../components/CarouselCoins/CarouselCoins ";
 import Portfolio from "../Portfolio/Portfolio";
 import Markets from "../Markets/Markets";
 import Categories from "../../components/Cryptocurrencies/Categories";
-import { useState } from "react";
 
 const MainPage = () => {
-  const [vsCurrency, setVsCurrency] = useState();
-  const callback = async (childData) => {
-    await setVsCurrency(childData);
-    if (childData === vsCurrency) {
-      setVsCurrency();
-      setVsCurrency(childData);
-    }
-  };
-
   return (
     <>
-      <NavBar currencyFr={callback} />
+      <NavBar />
       <CarouselCoins />
       <div className="container">
         <section className="tradingtopeople bg-light p-2">
@@ -38,7 +28,7 @@ const MainPage = () => {
               <Portfolio />
             </Tabs.TabPane>
             <Tabs.TabPane tab="Markets" key="2">
-              <Markets vsCurrency={vsCurrency} />
+              <Markets />
             </Tabs.TabPane>
             <Tabs.TabPane tab="Categories" key="3">
               <Categories />

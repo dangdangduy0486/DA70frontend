@@ -1,13 +1,6 @@
-import axios from "axios";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faX, faCheck, faCircle } from "@fortawesome/free-solid-svg-icons";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import getCurrencySymbol from "currency-symbols";
-import { useNavigate } from "react-router-dom";
 import moment from "moment/moment";
-import { toast } from "react-toastify";
-
-import useAuth from "../../hooks/useAuth";
 import { useGetTransactionsQuery } from "../../features/coins/coinsApiSlice";
 import CoinSymbols from "../../components/All Coins/CoinSymbols.js";
 import "./Request.css";
@@ -16,64 +9,12 @@ import NavBar from "../../components/NavBar/NavBar";
 import Loading from "../Loading/Loading";
 
 const PublicTransactions = () => {
-  const navigate = useNavigate();
-  const [p2pRequest, setP2PRequest] = useState([]);
-  const [status, setStatus] = useState(null);
-  const [reqID, setReqID] = useState(null);
-  // const [reqType, setReqType] = useState("spot");
-  const { email, role } = useAuth();
-
-  //   const handleResponseApproved = async (value) => {
-  //     setReqID(value._id);
-  //     setStatus("approved");
-  //     const url = `api/admin/response/${email}/p2p`;
-
-  //     await axios
-  //       .patch(url, {
-  //         requestID: reqID,
-  //         status: status,
-  //       })
-  //       .then((response) => {
-  //         window.location.reload(false);
-  //         req();
-  //         navigate("/request");
-  //         toast.success(response.data.message);
-  //       })
-  //       .catch((error) => {
-  //         toast.error(error.data.message);
-  //       });
-  //   };
-
-  //   const handleResponseDenided = async (value) => {
-  //     setReqID(value._id);
-  //     setStatus("rejected");
-  //     const url = `api/admin/response/${email}/p2p`;
-
-  //     await axios
-  //       .patch(url, {
-  //         requestID: reqID,
-  //         status: status,
-  //       })
-  //       .then((response) => {
-  //         window.location.reload(false);
-  //         req();
-  //         navigate("/request");
-  //         toast.success(response.data.message);
-  //       })
-  //       .catch((error) => {
-  //         toast.error(error.data.message);
-  //       });
-  //   };
-
   const { data } = useGetTransactionsQuery();
-
-  const callback = () => {};
   if (!data) return <Loading />;
-  console.log(data);
 
   return (
     <>
-      <NavBar currencyFr={callback} />
+      <NavBar />
       <div className="mb-4 user-request-table-container">
         <table
           className="table table-dark table-hover transactions-table user-request-table"
