@@ -15,8 +15,10 @@ const Signup = () => {
     const { fullname, email, password } = values;
     try {
       await postSignUp({ fullname, email, password }).unwrap();
-      toast.success("Sign up success");
-      history("/login");
+      toast.warning("Please check your email");
+      setTimeout(() => {
+        history("/login");
+      }, 2000);
     } catch (error) {
       if (error.status === 500) {
         return null;
